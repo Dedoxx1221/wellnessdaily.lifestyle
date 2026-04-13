@@ -4,7 +4,7 @@ window.addEventListener("popstate", function (t) {
     if (!t.state) return;
     setTimeout(function () {
         var back_redirect_back_link =
-            "http://wellnessdaily.lifestyle/slimv/bac1" +
+            "http://wellnessdaily.lifestyle/slimv/bac1/" +
             location.search +
             (typeof atomiGetVturbSrc === 'function' ? atomiGetVturbSrc() : "");
 
