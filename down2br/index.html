@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Última Chance</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  background: #000;
+  font-family: Arial, sans-serif;
+  color: #fff;
+}
+
+/* faixa topo */
+.top {
+  background: #7a63dc;
+  text-align: center;
+  font-weight: bold;
+  padding: 14px;
+  font-size: 14px;
+}
+
+/* conteúdo principal */
+.main {
+  text-align: center;
+  padding: 40px 20px 120px; /* espaço pro rodapé fixo */
+}
+
+.wrap {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 55px;
+  margin-bottom: 30px;
+}
+
+.sub {
+  font-size: 24px;
+  margin-bottom: 25px;
+}
+
+.purple {
+  color: #7a63dc;
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.price {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.checkout {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+/* 🔥 rodapé FIXO */
+.bottom {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #7a63dc;
+  text-align: center;
+  padding: 14px;
+  font-weight: bold;
+  font-size: 16px;
+  z-index: 999;
+}
+
+/* mobile */
+@media(max-width:600px){
+  h1 { font-size: 30px; }
+  .sub { font-size: 18px; }
+  .purple { font-size: 22px; }
+  .price { font-size: 18px; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="top">
+⚠ ATENÇÃO: NÃO FECHE OU ATUALIZE ESSA PÁGINA, ISSO PODE GERAR ERROS NA SUA COMPRA!
+</div>
+
+<div class="main">
+  <div class="wrap">
+
+    <h1>>> SUA ÚLTIMA CHANCE!!! <<</h1>
+
+    <p class="sub">
+      Essa é a ÚLTIMA OPORTUNIDADE para você se tornar um verdadeiro Rei do Sexo!!
+    </p>
+
+    <p class="purple">
+      Somente nessa página você tem a oportunidade de garantir o treinamento "Rei do Sexo" com 40% OFF!
+    </p>
+
+    <p class="price">
+      Eu vou liberar para você o treinamento por apenas R$ 117,00!!
+    </p>
+
+    <div class="checkout">
+      <!-- HOTMART -->
+      <div id="hotmart-sales-funnel"></div>
+
+      <script src="https://checkout.hotmart.com/lib/hotmart-checkout-elements.js"></script>
+      <script>
+        checkoutElements.init('salesFunnel').mount('#hotmart-sales-funnel')
+      </script>
+      <!-- HOTMART -->
+    </div>
+
+  </div>
+</div>
+
+<div class="bottom">
+Oferta válida por pouco tempo. Garanta já a sua vaga.
+</div>
+
+</body>
+</html>
