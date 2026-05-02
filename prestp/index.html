@@ -1,0 +1,110 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
+  <title>Hold On a Second</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Modern Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #121212;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+      color: #FFA500;
+    }
+
+    .timer {
+      color: #FFA500;
+      font-size: 1.1rem;
+      font-weight: 500;
+      margin-bottom: 40px;
+    }
+
+    .subtext {
+      font-size: 1.4rem;
+      font-weight: 500;
+      margin-bottom: 30px;
+      max-width: 600px;
+      color: #ffffff;
+    }
+
+    .btn {
+      background: #32cd32;
+      color: #000;
+      padding: 18px 36px;
+      font-size: 1.15rem;
+      font-weight: 700;
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.3s ease;
+      animation: pulse 1.5s infinite;
+    }
+
+    .btn:hover {
+      background: #28a428;
+      transform: scale(1.05);
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.03); }
+      100% { transform: scale(1); }
+    }
+
+    .stock {
+      color: #FF3B3B;
+      font-size: 1.1rem;
+      margin-top: 30px;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>HOLD ON A SECOND</h1>
+  <div class="timer" id="countdown">You’ll be taken to the next page in: 20 s</div>
+  <div class="subtext">Please confirm that you're old enough to view this exclusive offer.</div>
+  <button class="btn" onclick="proceed()">YES, I’M OVER 35 →</button>
+  <div class="stock">Available stock: 15 units</div>
+
+  <script>
+    let seconds = 20;
+    const countdown = document.getElementById('countdown');
+    const timer = setInterval(() => {
+      seconds--;
+      if (seconds >= 0) {
+        countdown.textContent = `You’ll be taken to the next page in: ${seconds} s`;
+      } else {
+        clearInterval(timer);
+        countdown.textContent = "You may proceed now.";
+      }
+    }, 1000);
+
+    function proceed() {
+      window.location.href = "https://wellnessdaily.lifestyle/stp/";
+    }
+  </script>
+
+
+
+</body></html>
