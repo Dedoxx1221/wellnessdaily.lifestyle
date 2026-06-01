@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <title>Foundation</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: #ffffff;
+      color: #111111;
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    .page {
+      width: 100%;
+      min-height: 100vh;
+      padding: 48px 16px 90px;
+    }
+
+    .wrap {
+      width: 100%;
+      max-width: 920px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .headline {
+      margin: 0 auto 58px;
+      max-width: 900px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 40px;
+      line-height: 1.18;
+      font-weight: 400;
+      letter-spacing: -1.1px;
+      color: #161616;
+    }
+
+    .video {
+      position: relative;
+      display: block;
+      width: 430px;
+      max-width: 100%;
+      aspect-ratio: 16 / 9;
+      margin: 0 auto 29px;
+      overflow: hidden;
+      border-radius: 4px;
+      background: #111;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .video img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .text {
+      max-width: 920px;
+      margin: 0 auto;
+      text-align: left;
+      font-size: 21px;
+      line-height: 1.52;
+      color: #111111;
+    }
+
+    .text p {
+      margin: 0 0 22px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      width: 505px;
+      max-width: 100%;
+      min-height: 61px;
+      margin-top: 9px;
+      background: #087d7f;
+      color: #ffffff;
+      text-decoration: none;
+      border-radius: 2px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 22px;
+      font-weight: 700;
+      box-shadow: 0 4px 9px rgba(0,0,0,.20);
+      cursor: pointer;
+    }
+
+    .button:hover {
+      background: #067274;
+    }
+
+    .button-play {
+      width: 25px;
+      height: 25px;
+      border: 3px solid #ffffff;
+      border-radius: 50%;
+      position: relative;
+      flex: 0 0 auto;
+    }
+
+    .button-play::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-35%, -50%);
+      width: 0;
+      height: 0;
+      border-top: 6px solid transparent;
+      border-bottom: 6px solid transparent;
+      border-left: 9px solid #ffffff;
+    }
+
+    .site-footer {
+      background: #2f496f;
+      min-height: 430px;
+      padding: 62px 16px 54px;
+      text-align: center;
+      font-family: Arial, Helvetica, sans-serif;
+      color: rgba(255, 255, 255, 0.58);
+    }
+
+    .footer-logo {
+      width: 84px;
+      height: 84px;
+      margin: 0 auto 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.72);
+    }
+
+    .footer-logo svg {
+      width: 78px;
+      height: 78px;
+    }
+
+    .facebook-disclaimer {
+      max-width: 330px;
+      margin: 0 auto;
+      font-size: 10px;
+      line-height: 1.6;
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.28);
+    }
+
+    .footer-line {
+      width: 586px;
+      max-width: 100%;
+      height: 1px;
+      margin: 43px auto 34px;
+      background: rgba(255, 255, 255, 0.10);
+    }
+
+    .copyright {
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.55);
+      margin-bottom: 19px;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 28px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.58);
+      text-decoration: none;
+    }
+
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .page {
+        padding-top: 36px;
+      }
+
+      .headline {
+        font-size: 34px;
+        margin-bottom: 42px;
+      }
+
+      .text {
+        max-width: 610px;
+        font-size: 18px;
+      }
+
+      .button {
+        font-size: 19px;
+        min-height: 55px;
+      }
+
+      .site-footer {
+        min-height: 390px;
+        padding-top: 52px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .page {
+        padding: 30px 14px 70px;
+      }
+
+      .headline {
+        font-size: 28px;
+        line-height: 1.22;
+        margin-bottom: 30px;
+      }
+
+      .video {
+        margin-bottom: 22px;
+      }
+
+      .text {
+        font-size: 17px;
+        line-height: 1.5;
+      }
+
+      .text p {
+        margin-bottom: 17px;
+      }
+
+      .button {
+        width: 100%;
+        min-height: 54px;
+        font-size: 17px;
+        padding: 0 12px;
+      }
+
+      .footer-logo {
+        margin-bottom: 38px;
+      }
+
+      .footer-links {
+        gap: 22px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <main class="page">
+      <section class="wrap">
+        <h1 class="headline">Discover the "Egyptian Root Ritual" Secret That<br>Demolishes Wrinkles in Minutes</h1>
+
+        <a class="video js-redirect" href="#" aria-label="Press to play video">
+          <img src="images/master.webp" alt="Egyptian Root Ritual video thumbnail">
+        </a>
+
+        <div class="text">
+          <p>Scientists recently discovered a strange "Egyptian Root Ritual" that is 10 times more potent than retinol.</p>
+
+          <p>Rub it in your face daily for 2 minutes to overthrow black spots, wrinkles and other skin problems that come with age.</p>
+
+          <p>This revolutionary discovery has sent the world of skin care and anti-aging into an outrage, and big pharma wants to take it down.</p>
+
+          <p>Tap the button below and discover the "Egyptian Root Ritual" for yourself before it's too late.</p>
+        </div>
+
+        <a class="button js-redirect" href="#">
+          <span>Watch The Special Video Now</span>
+          <span class="button-play"></span>
+        </a>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-logo" aria-label="Wellness Daily logo">
+        <svg viewBox="0 0 100 100" role="img" aria-hidden="true">
+          <rect x="1" y="1" width="98" height="98" fill="#d9e5ea"/>
+          <g fill="none" stroke="#0b6f65" stroke-width="2.4">
+            <path d="M50 3 L97 50 L50 97 L3 50 Z"/>
+            <path d="M50 14 C70 14 86 30 86 50 C86 70 70 86 50 86 C30 86 14 70 14 50 C14 30 30 14 50 14 Z"/>
+            <path d="M50 14 L50 86"/>
+            <path d="M14 50 L86 50"/>
+            <path d="M25 25 L75 75"/>
+            <path d="M75 25 L25 75"/>
+            <path d="M34 12 L66 88"/>
+            <path d="M66 12 L34 88"/>
+            <path d="M12 34 L88 66"/>
+            <path d="M88 34 L12 66"/>
+          </g>
+          <circle cx="50" cy="50" r="18" fill="#0b6f65"/>
+          <circle cx="50" cy="50" r="9" fill="#d9e5ea"/>
+          <g fill="#0b6f65">
+            <circle cx="50" cy="25" r="6"/>
+            <circle cx="50" cy="75" r="6"/>
+            <circle cx="25" cy="50" r="6"/>
+            <circle cx="75" cy="50" r="6"/>
+            <circle cx="32" cy="32" r="6"/>
+            <circle cx="68" cy="68" r="6"/>
+            <circle cx="68" cy="32" r="6"/>
+            <circle cx="32" cy="68" r="6"/>
+          </g>
+        </svg>
+      </div>
+
+      <p class="facebook-disclaimer">
+        This site is not a part of the Facebook website or Facebook Inc. Additionally, this site is not endorsed by Facebook in any way. Facebook is a trademark of Facebook, Inc.
+      </p>
+
+      <div class="footer-line"></div>
+
+      <p class="copyright">© 2026 Wellness Daily. All rights reserved.</p>
+
+      <nav class="footer-links" aria-label="Footer links">
+        <a href="#">Terms of Service</a>
+        <a href="#">Privacy Policy</a>
+      </nav>
+    </footer>
+  </div>
+
+  <div id="print-portal"></div>
+
+  <script>
+    (function () {
+      var destination = "https://hop.clickbank.net/?affiliate=davidhook&vendor=primebiome&cbpage=tsl&affop=1";
+
+      function getTrackingParams() {
+        return window.location.search.replace("?", "");
+      }
+
+      function redirectUser(event) {
+        event.preventDefault();
+
+        var tracking = getTrackingParams();
+        var finalUrl = destination;
+
+        if (tracking) {
+          finalUrl += destination.indexOf("?") > -1 ? "&" + tracking : "?" + tracking;
+        }
+
+        window.location.href = finalUrl;
+      }
+
+      document.querySelectorAll(".js-redirect").forEach(function (element) {
+        element.addEventListener("click", redirectUser);
+      });
+    })();
+  </script>
+</body>
+</html>
