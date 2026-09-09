@@ -1,0 +1,1973 @@
+<!DOCTYPE html><html lang="en"><head>
+  <script type="text/javascript" src="js/pretrack.js"></script>
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "witq225tjk");
+  </script>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>AI Task Rewards</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+
+  <script>
+    var query = window.location.search;
+    var back_redirect_back_link = 'https://wellnessdaily.lifestyle/back' + query;
+    history.pushState({}, '', location.href);
+    history.pushState({}, '', location.href);
+    window.onpopstate = function () {
+      setTimeout(function () {
+        location.href = back_redirect_back_link;
+      }, 1);
+    };
+  </script>
+
+  <style>
+    :root {
+      --cream: #f7f4ee;
+      --white: #ffffff;
+      --navy: #17365f;
+      --blue: #356bb2;
+      --blue-2: #2f63a7;
+      --green: #2b8b68;
+      --green-soft: #eaf5f0;
+      --text: #263d5c;
+      --muted: #738198;
+      --border: #d9e2ec;
+      --soft: #eef3f8;
+      --shadow: 0 14px 34px rgba(32, 63, 103, .10);
+      --safe-top: env(safe-area-inset-top, 0px);
+      --safe-bottom: env(safe-area-inset-bottom, 0px);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      width: 100%;
+      min-height: 100%;
+      background: var(--cream);
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: var(--navy);
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      min-height: 100svh;
+      overflow-x: hidden;
+      overscroll-behavior-y: none;
+    }
+
+    button {
+      font: inherit;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+
+    .app {
+      width: 100%;
+      max-width: 520px;
+      min-height: 100svh;
+      margin: 0 auto;
+      position: relative;
+      overflow: hidden;
+      background: var(--cream);
+    }
+
+    .screen {
+      display: none;
+      min-height: 100svh;
+      padding: calc(22px + var(--safe-top)) 18px calc(28px + var(--safe-bottom));
+      flex-direction: column;
+      opacity: 0;
+      transform: translateY(10px);
+      overflow-x: hidden;
+    }
+
+    .screen.active {
+      display: flex;
+      animation: screenIn .32s ease forwards;
+    }
+
+    @keyframes screenIn {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Keep the viewport stable on iOS Safari.
+       100dvh changes while Safari's browser chrome expands/collapses and can
+       make vertically-centered screens appear to jump or auto-scroll. */
+    @supports not (height: 100svh) {
+      body, .app, .screen { min-height: 100vh; }
+    }
+
+    .watermark {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      opacity: .032;
+      z-index: 0;
+    }
+
+    .watermark span {
+      display: block;
+      color: var(--navy);
+      font-size: 92px;
+      font-weight: 900;
+      white-space: nowrap;
+      transform: rotate(-13deg) translate(-80px, 20px);
+      line-height: .95;
+      letter-spacing: -.06em;
+    }
+
+    .hero {
+      justify-content: flex-start;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      margin-block: auto;
+      width: 100%;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 10px 16px;
+      border: 1px solid var(--green);
+      border-radius: 999px;
+      color: var(--green);
+      font-size: 12px;
+      line-height: 1.2;
+      font-weight: 800;
+      letter-spacing: .065em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      background: rgba(255,255,255,.22);
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 0 5px rgba(43,139,104,.08);
+      animation: dotPulse 1.6s ease-in-out infinite;
+    }
+
+    @keyframes dotPulse { 50% { opacity: .48; transform: scale(.88); } }
+
+    h1 {
+      font-size: clamp(43px, 10.5vw, 62px);
+      line-height: 1.02;
+      letter-spacing: -.055em;
+      font-weight: 900;
+      color: var(--navy);
+      margin-bottom: 16px;
+    }
+
+    h1 .blue { color: var(--blue); }
+
+    .hero-headline {
+      font-size: clamp(36px, 9.3vw, 55px);
+    }
+
+    .headline-line {
+      display: block;
+      white-space: nowrap;
+    }
+
+    /* The third line is the widest. Keep it safely inside narrow iPhone viewports. */
+    .headline-line:last-child {
+      font-size: .94em;
+    }
+
+    .hero-sub {
+      max-width: 430px;
+      margin: 0 auto 23px;
+      font-size: clamp(18px, 4.8vw, 21px);
+      line-height: 1.48;
+      color: var(--text);
+    }
+
+    .hero-card {
+      background: rgba(255,255,255,.88);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 18px;
+      margin: 0 auto 18px;
+      max-width: 445px;
+      text-align: left;
+      box-shadow: 0 7px 26px rgba(38,61,92,.045);
+    }
+
+    .hero-card-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 9px 0;
+      color: var(--text);
+      font-weight: 700;
+      font-size: 15px;
+    }
+
+    .hero-check {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      flex: 0 0 26px;
+      display: grid;
+      place-items: center;
+      background: var(--green-soft);
+      color: var(--green);
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .cta {
+      width: 100%;
+      min-height: 64px;
+      border: none;
+      border-radius: 999px;
+      background: var(--blue);
+      color: #fff;
+      font-size: 20px;
+      font-weight: 900;
+      cursor: pointer;
+      box-shadow: 0 9px 22px rgba(53,107,178,.24);
+      transition: transform .2s ease, filter .2s ease;
+      animation: ctaPulse 1s ease-in-out infinite;
+    }
+
+    .cta:hover { filter: brightness(1.05); }
+    .cta:active { transform: scale(.985); }
+
+    @keyframes ctaPulse {
+      0%,100% { transform: scale(1); }
+      50% { transform: scale(1.08); }
+    }
+
+    @keyframes scalePop {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.04); }
+    }
+
+    @keyframes slideInDown {
+      from { opacity: 0; transform: translateY(-100%); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .micro {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.4;
+    }
+
+
+    /* HERO SOCIAL PROOF */
+    .paid-card {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 14px;
+      width: 100%;
+      max-width: 445px;
+      margin: 0 auto 22px;
+      padding: 20px 22px;
+      background: rgba(255,255,255,.92);
+      border: 1px solid #ccd8e6;
+      border-radius: 18px;
+      text-align: left;
+    }
+
+    .paid-card-main { min-width: 0; flex: 1; }
+
+    .paid-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #52647c;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .085em;
+      margin-bottom: 10px;
+    }
+
+    .paid-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--green);
+      flex: 0 0 auto;
+      animation: dotPulse 2s infinite;
+    }
+
+    .paid-value {
+      color: #238260;
+      font-size: clamp(29px, 7.2vw, 35px);
+      line-height: 1.02;
+      font-weight: 900;
+      letter-spacing: -.035em;
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+
+    .live-badge {
+      margin-top: 2px;
+      padding: 5px 10px;
+      border-radius: 6px;
+      background: #2b8766;
+      color: #fff;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .02em;
+    }
+
+    .recent-payouts-label {
+      width: 100%;
+      max-width: 445px;
+      margin: 0 auto 10px;
+      text-align: left;
+      color: #52647c;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .11em;
+    }
+
+    .payouts-feed {
+      width: 100%;
+      max-width: 445px;
+      max-height: 146px;
+      overflow: hidden;
+      margin: 0 auto 18px;
+      text-align: left;
+    }
+
+    .payout-row {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      min-height: 59px;
+      border-bottom: 1px solid #d5deea;
+      animation: slideInDown 400ms ease;
+    }
+
+    .payout-avatar {
+      width: 34px;
+      height: 34px;
+      flex: 0 0 34px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-size: 15px;
+      font-weight: 900;
+    }
+
+    .avatar-blue { background: #477cac; }
+    .avatar-green { background: #4f8b72; }
+
+    .payout-copy {
+      min-width: 0;
+      flex: 1;
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      white-space: nowrap;
+    }
+
+    .payout-copy strong {
+      color: #102f55;
+      font-size: 15px;
+      font-weight: 900;
+    }
+
+    .payout-copy span {
+      color: #64748b;
+      font-size: 13px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .payout-amount {
+      margin-left: auto;
+      color: #238260;
+      font-size: 15px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    /* TASKS */
+    .task-screen { padding-top: calc(18px + var(--safe-top)); }
+
+    .task-header {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .progress-wrap { min-width: 0; }
+
+    .task-kicker {
+      font-size: 11px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .11em;
+      font-weight: 900;
+      margin-bottom: 7px;
+    }
+
+    .progress-track {
+      display: flex;
+      gap: 6px;
+    }
+
+    .progress-segment {
+      height: 7px;
+      border-radius: 999px;
+      flex: 1;
+      background: #dde5ed;
+      overflow: hidden;
+    }
+
+    .progress-segment.done,
+    .progress-segment.current { background: var(--blue); }
+
+    .earnings {
+      min-width: 138px;
+      background: var(--white);
+      border: 1px solid rgba(47, 143, 103, .28);
+      border-radius: 16px;
+      padding: 11px 14px;
+      text-align: right;
+      box-shadow: 0 8px 22px rgba(38,61,92,.07), 0 0 0 3px rgba(47,143,103,.045);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .earnings-label {
+      color: var(--muted);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      font-weight: 900;
+      margin-bottom: 2px;
+    }
+
+    .earnings-value {
+      color: var(--green);
+      font-size: 30px;
+      line-height: 1;
+      font-weight: 900;
+      letter-spacing: -.035em;
+      font-variant-numeric: tabular-nums;
+      display: inline-block;
+      transform-origin: 50% 60%;
+    }
+
+    .earnings-value.rolling {
+      animation: moneyRoll 1.15s cubic-bezier(.16,.84,.22,1);
+      text-shadow: 0 0 18px rgba(43,139,104,.24);
+    }
+
+    .earnings.money-active {
+      animation: earningsBurst 1.3s cubic-bezier(.18,.9,.22,1);
+      border-color: rgba(43,139,104,.62);
+      box-shadow: 0 12px 30px rgba(38,61,92,.10), 0 0 0 5px rgba(43,139,104,.08), 0 0 30px rgba(43,139,104,.13);
+    }
+
+    .earnings.money-active::after {
+      content: '';
+      position: absolute;
+      inset: -45%;
+      background: linear-gradient(115deg, transparent 39%, rgba(255,255,255,.76) 49%, transparent 59%);
+      transform: translateX(-65%) rotate(8deg);
+      animation: moneySheen .95s ease-out forwards;
+      pointer-events: none;
+    }
+
+    @keyframes moneyRoll {
+      0% { transform: translateY(0) scale(1); filter: blur(0); }
+      12% { transform: translateY(-10px) scale(1.10); filter: blur(1.2px); }
+      28% { transform: translateY(9px) scale(1.16); filter: blur(1.8px); }
+      46% { transform: translateY(-7px) scale(1.18); filter: blur(1px); }
+      64% { transform: translateY(5px) scale(1.12); filter: blur(.65px); }
+      82% { transform: translateY(-2px) scale(1.08); filter: blur(.2px); }
+      100% { transform: translateY(0) scale(1); filter: blur(0); }
+    }
+
+    @keyframes earningsBurst {
+      0%,100% { transform: scale(1); }
+      18% { transform: scale(1.045) rotate(-.7deg); }
+      42% { transform: scale(1.075) rotate(.6deg); }
+      72% { transform: scale(1.03); }
+    }
+
+    @keyframes moneySheen {
+      to { transform: translateX(70%) rotate(8deg); }
+    }
+
+    .money-particle {
+      position: fixed;
+      z-index: 9999;
+      pointer-events: none;
+      color: var(--green);
+      font-size: 17px;
+      font-weight: 900;
+      opacity: 0;
+      text-shadow: 0 2px 10px rgba(43,139,104,.22);
+      animation: moneyParticleFly .95s cubic-bezier(.17,.84,.25,1) forwards;
+    }
+
+    @keyframes moneyParticleFly {
+      0% { opacity: 0; transform: translate3d(0,10px,0) scale(.65) rotate(0deg); }
+      18% { opacity: 1; }
+      100% { opacity: 0; transform: translate3d(var(--dx),var(--dy),0) scale(1.12) rotate(var(--rot)); }
+    }
+
+    .task-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+      margin-bottom: 14px;
+    }
+
+    .task-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      color: var(--green);
+      background: var(--green-soft);
+      border-radius: 999px;
+      padding: 7px 11px;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .question {
+      font-size: clamp(23px, 6vw, 29px);
+      line-height: 1.16;
+      letter-spacing: -.025em;
+      font-weight: 900;
+      color: var(--navy);
+    }
+
+    .question-note {
+      margin-top: 8px;
+      color: var(--text);
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 1.4;
+    }
+
+    .question-note strong {
+      color: var(--blue);
+      font-weight: 900;
+    }
+
+    .image-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .image-option {
+      position: relative;
+      border: 2px solid transparent;
+      border-radius: 19px;
+      background: var(--white);
+      padding: 8px;
+      box-shadow: 0 8px 24px rgba(38,61,92,.075);
+      cursor: pointer;
+      transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+      overflow: hidden;
+      min-width: 0;
+    }
+
+    .image-option:hover { transform: translateY(-2px); }
+    .image-option:active { transform: scale(.985); }
+
+    .image-option.selected {
+      border-color: var(--green);
+      box-shadow: 0 0 0 4px rgba(43,139,104,.09), 0 10px 28px rgba(38,61,92,.10);
+      transform: scale(.985);
+    }
+
+    .image-option .visual {
+      aspect-ratio: 1 / 1;
+      width: 100%;
+      border-radius: 14px;
+      overflow: hidden;
+      display: block;
+      background: #edf2f5;
+    }
+
+    .image-option svg { width: 100%; height: 100%; display: block; }
+
+    .image-option .visual img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: center;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    .option-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      padding: 10px 5px 3px;
+      color: var(--navy);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .option-letter {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: var(--soft);
+      color: var(--blue);
+      font-size: 11px;
+    }
+
+    .selected .option-letter {
+      background: var(--green);
+      color: white;
+    }
+
+
+    .reference-task {
+      margin-top: 14px;
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      padding: 11px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: #f8fafc;
+      text-align: left;
+    }
+
+    .reference-thumb {
+      width: 96px;
+      height: 96px;
+      flex: 0 0 96px;
+      border-radius: 13px;
+      overflow: hidden;
+      background: var(--soft);
+      box-shadow: inset 0 0 0 1px rgba(38,61,92,.05);
+    }
+
+    .reference-thumb img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .reference-meta { min-width: 0; }
+
+    .reference-kicker {
+      color: var(--green);
+      font-size: 10px;
+      line-height: 1.2;
+      font-weight: 900;
+      letter-spacing: .11em;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+
+    .reference-copy {
+      color: var(--navy);
+      font-size: 14px;
+      line-height: 1.35;
+      font-weight: 800;
+    }
+
+    .image-grid.three-options {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 9px;
+    }
+
+    .three-options .image-option {
+      padding: 6px;
+      border-radius: 16px;
+    }
+
+    .three-options .image-option .visual { border-radius: 11px; }
+
+    .three-options .option-footer {
+      justify-content: center;
+      padding: 8px 2px 2px;
+      font-size: 11px;
+    }
+
+    .three-options .option-footer > span:first-child { display: none; }
+
+    .number-challenge {
+      position: relative;
+      overflow: hidden;
+      margin-top: 15px;
+      padding: 7px;
+      border: 1px solid #cbd6e1;
+      border-radius: 17px;
+      background: #e9e9e3;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.72);
+    }
+
+    .number-challenge::after {
+      content: 'READ THE 4-DIGIT CODE';
+      position: absolute;
+      left: 12px;
+      top: 10px;
+      z-index: 2;
+      color: rgba(38,61,92,.58);
+      font-size: 9px;
+      font-weight: 900;
+      letter-spacing: .09em;
+      pointer-events: none;
+    }
+
+    .digits-image {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 3 / 1;
+      object-fit: contain;
+      border-radius: 12px;
+      background: #efeee8;
+    }
+
+    .number-challenge::after { display: none; }
+
+    .number-options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .number-option {
+      min-height: 78px;
+      border: 2px solid transparent;
+      border-radius: 18px;
+      background: var(--white);
+      color: var(--navy);
+      box-shadow: 0 8px 24px rgba(38,61,92,.075);
+      font-size: clamp(25px, 7vw, 32px);
+      line-height: 1;
+      letter-spacing: .08em;
+      font-weight: 900;
+      font-variant-numeric: tabular-nums;
+      cursor: pointer;
+      transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+    }
+
+    .number-option:hover { transform: translateY(-2px); }
+    .number-option:active { transform: scale(.985); }
+
+    .number-option.selected {
+      border-color: var(--green);
+      color: var(--green);
+      box-shadow: 0 0 0 4px rgba(43,139,104,.09), 0 10px 28px rgba(38,61,92,.10);
+      transform: scale(.985);
+    }
+
+    .status-line {
+      height: 26px;
+      text-align: center;
+      color: var(--green);
+      font-size: 14px;
+      font-weight: 900;
+      opacity: 0;
+      transform: translateY(4px);
+      transition: .2s ease;
+    }
+
+    .status-line.show { opacity: 1; transform: translateY(0); }
+
+    .tap-helper {
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.35;
+      margin-top: auto;
+      padding-top: 4px;
+    }
+
+    /* FINAL */
+    .final-screen {
+      justify-content: center;
+      text-align: center;
+    }
+
+    .complete-icon {
+      width: 66px;
+      height: 66px;
+      display: grid;
+      place-items: center;
+      margin: 0 auto 15px;
+      border-radius: 50%;
+      background: var(--green);
+      color: white;
+      font-size: 32px;
+      font-weight: 900;
+      box-shadow: 0 10px 26px rgba(43,139,104,.22);
+    }
+
+    .final-kicker {
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      margin-bottom: 7px;
+    }
+
+    .final-title {
+      font-size: clamp(34px, 9vw, 48px);
+      line-height: 1.04;
+      font-weight: 900;
+      letter-spacing: -.045em;
+      margin-bottom: 10px;
+    }
+
+    .final-copy {
+      color: var(--text);
+      font-size: 17px;
+      line-height: 1.45;
+      margin-bottom: 18px;
+    }
+
+    .final-balance-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 22px 18px;
+      box-shadow: var(--shadow);
+      margin-bottom: 18px;
+    }
+
+    .final-balance-label {
+      color: var(--muted);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      font-weight: 900;
+      margin-bottom: 7px;
+    }
+
+    .final-balance {
+      color: var(--green);
+      font-size: clamp(58px, 15vw, 78px);
+      line-height: 1;
+      font-weight: 900;
+      letter-spacing: -.055em;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .final-mini {
+      margin-top: 9px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+
+    /* FINAL SCREEN — NEW LIGHT PALETTE */
+    .final-screen {
+      background: var(--cream);
+      color: var(--navy);
+      justify-content: flex-start;
+      text-align: center;
+      padding-left: 12px;
+      padding-right: 12px;
+    }
+
+
+    .final-content {
+      width: 100%;
+      margin-block: auto;
+    }
+
+    .final-balance,
+    .final-balance-card,
+    .cta {
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+    }
+
+    .is-ios .final-balance.final-rolling,
+    .is-ios .final-balance.final-landed {
+      filter: none !important;
+    }
+
+    .final-screen .final-kicker {
+      color: var(--green);
+      font-size: 12px;
+      letter-spacing: .12em;
+      margin-bottom: 8px;
+    }
+
+    .final-screen .final-copy {
+      color: var(--text);
+      font-size: clamp(16px, 4.4vw, 19px);
+      line-height: 1.5;
+    }
+
+    .final-verified-copy { margin-bottom: 22px; }
+
+    .final-screen .final-balance-card {
+      background: rgba(255,255,255,.94);
+      border: 1px solid #cbd8e6;
+      border-radius: 22px;
+      padding: 26px 18px;
+      box-shadow: 0 14px 34px rgba(32,63,103,.09);
+      margin-bottom: 22px;
+    }
+
+    .final-screen .final-balance-label {
+      color: #61748d;
+      font-size: 11px;
+      margin-bottom: 14px;
+    }
+
+    .final-screen .final-balance {
+      color: var(--blue);
+      font-size: clamp(64px, 18vw, 88px);
+      margin-bottom: 18px;
+      text-shadow: none;
+      display: inline-block;
+      transform-origin: 50% 58%;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .final-balance-card.final-winning {
+      position: relative;
+      overflow: hidden;
+      animation: finalCardWin 3.45s cubic-bezier(.16,.84,.22,1);
+    }
+
+    .final-balance-card.final-winning::before {
+      content: '';
+      position: absolute;
+      width: 230px;
+      height: 230px;
+      left: 50%;
+      top: 46%;
+      transform: translate(-50%,-50%) scale(.2);
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(53,107,178,.16), rgba(43,139,104,.08) 45%, transparent 72%);
+      animation: finalGlowBloom 3.2s ease-out forwards;
+      pointer-events: none;
+    }
+
+    .final-balance.final-rolling {
+      animation: finalNumberSpin .42s ease-in-out infinite alternate;
+      text-shadow: 0 0 22px rgba(53,107,178,.18);
+    }
+
+    .final-balance.final-landed {
+      animation: finalNumberLand .82s cubic-bezier(.17,.86,.24,1);
+    }
+
+    @keyframes finalCardWin {
+      0% { transform: scale(.975); box-shadow: 0 12px 28px rgba(32,63,103,.07); }
+      15% { transform: scale(1.018); }
+      38% { transform: scale(1.03); box-shadow: 0 18px 42px rgba(53,107,178,.13), 0 0 0 5px rgba(53,107,178,.05); }
+      70% { transform: scale(1.016); }
+      100% { transform: scale(1); box-shadow: var(--shadow); }
+    }
+
+    @keyframes finalGlowBloom {
+      0% { opacity: 0; transform: translate(-50%,-50%) scale(.2); }
+      22% { opacity: 1; }
+      75% { opacity: .72; transform: translate(-50%,-50%) scale(2.2); }
+      100% { opacity: 0; transform: translate(-50%,-50%) scale(2.65); }
+    }
+
+    @keyframes finalNumberSpin {
+      from { transform: translateY(-4px) scale(1.03); filter: blur(.2px); }
+      to { transform: translateY(5px) scale(1.105); filter: blur(1.15px); }
+    }
+
+    @keyframes finalNumberLand {
+      0% { transform: scale(1.18); filter: blur(1px); }
+      42% { transform: scale(.96); filter: blur(0); }
+      72% { transform: scale(1.055); }
+      100% { transform: scale(1); }
+    }
+
+    .balance-badges {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .balance-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 14px;
+      border: 1px solid var(--green);
+      background: rgba(43,139,104,.045);
+      border-radius: 999px;
+      color: var(--green);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .balance-badge span { font-size: 11px; }
+
+    .final-screen .final-title {
+      color: var(--navy);
+      font-size: clamp(25px, 7vw, 30px);
+      line-height: 1.15;
+      margin-bottom: 10px;
+      letter-spacing: -.035em;
+    }
+
+    .claim-copy {
+      max-width: 470px;
+      margin: 0 auto 22px;
+    }
+
+    .final-cta {
+      border-radius: 16px;
+      min-height: 67px;
+      background: var(--blue);
+      box-shadow: 0 9px 22px rgba(53,107,178,.22);
+      font-size: clamp(19px, 5vw, 22px);
+      margin-bottom: 14px;
+    }
+
+    .urgency-timer {
+      color: var(--green);
+      font-size: 16px;
+      font-weight: 900;
+      margin-bottom: 15px;
+    }
+
+    .final-secure {
+      color: #61748d;
+      font-size: 13px;
+    }
+
+    @media (max-width: 390px) {
+      .screen { padding-left: 15px; padding-right: 15px; }
+      .image-grid { gap: 9px; }
+      .image-grid.three-options { gap: 7px; }
+      .reference-thumb { width: 82px; height: 82px; flex-basis: 82px; }
+      .reference-copy { font-size: 13px; }
+      .digits-image { width: 100%; }
+      .number-options { gap: 9px; }
+      .task-card { padding: 16px; }
+      .earnings { min-width: 111px; }
+      .earnings-value { font-size: 22px; }
+      h1 { font-size: clamp(39px, 10vw, 52px); }
+    }
+
+    @media (max-height: 720px) {
+      .hero { justify-content: flex-start; }
+      .pill { margin-bottom: 16px; }
+      h1 { font-size: clamp(36px, 9.6vw, 48px); margin-bottom: 12px; }
+      .hero-sub { margin-bottom: 15px; }
+      .paid-card { margin-bottom: 14px; padding: 16px 18px; }
+      .payouts-feed { max-height: 118px; margin-bottom: 14px; }
+      .payout-row { min-height: 52px; }
+      .task-card { padding: 15px; }
+      .question { font-size: clamp(21px, 5.6vw, 25px); }
+      .option-footer { padding-top: 7px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .001ms !important;
+      }
+    }
+  
+
+    /* ORIGINAL DARK PALETTE VARIANT — layout/logic unchanged */
+    :root {
+      --cream: #070d1a;
+      --white: #0e1726;
+      --navy: #f1f5f9;
+      --blue: #3b82f6;
+      --blue-2: #3b82f6;
+      --green: #22c55e;
+      --green-soft: rgba(34,197,94,.12);
+      --text: #a8b5c7;
+      --muted: #7c8da5;
+      --border: rgba(255,255,255,.09);
+      --soft: #121f33;
+      --shadow: 0 14px 34px rgba(0,0,0,.28);
+      --amber: #f59e0b;
+    }
+
+    html,
+    body,
+    .app,
+    .final-screen {
+      background: var(--cream);
+      color: var(--navy);
+    }
+
+    .watermark span { color: rgba(255,255,255,.50); }
+    .pill { background: rgba(14,23,38,.72); }
+    .dot { box-shadow: 0 0 0 5px rgba(34,197,94,.08); }
+
+    .hero-card,
+    .paid-card,
+    .task-card,
+    .earnings,
+    .image-option,
+    .number-option,
+    .reference-task,
+    .final-screen .final-balance-card {
+      background: var(--white);
+      border-color: var(--border);
+    }
+
+    .hero-card { box-shadow: 0 7px 26px rgba(0,0,0,.16); }
+    .paid-card { box-shadow: 0 8px 26px rgba(0,0,0,.14); }
+    .paid-label,
+    .recent-payouts-label { color: var(--muted); }
+    .paid-value,
+    .payout-amount { color: var(--green); }
+    .live-badge { background: var(--green); color: #fff; }
+    .payout-row { border-color: var(--border); }
+    .payout-copy strong { color: var(--navy); }
+    .payout-copy span { color: var(--muted); }
+
+    .cta,
+    .final-cta {
+      background: var(--blue);
+      box-shadow: 0 0 28px rgba(59,130,246,.35);
+    }
+
+    .progress-segment { background: #1b293b; }
+    .progress-segment.done,
+    .progress-segment.current { background: var(--blue); }
+
+    .earnings {
+      border-color: rgba(34,197,94,.35);
+      box-shadow: 0 8px 22px rgba(0,0,0,.17), 0 0 0 3px rgba(34,197,94,.045);
+    }
+    .earnings-value.rolling { text-shadow: 0 0 18px rgba(34,197,94,.28); }
+    .earnings.money-active {
+      border-color: rgba(34,197,94,.62);
+      box-shadow: 0 12px 30px rgba(0,0,0,.20), 0 0 0 5px rgba(34,197,94,.08), 0 0 30px rgba(34,197,94,.15);
+    }
+    .money-particle {
+      color: var(--green);
+      text-shadow: 0 2px 10px rgba(34,197,94,.25);
+    }
+
+    .image-option { box-shadow: 0 8px 24px rgba(0,0,0,.18); }
+    .image-option .visual,
+    .reference-thumb { background: var(--soft); }
+    .image-option.selected,
+    .number-option.selected {
+      box-shadow: 0 0 0 4px rgba(34,197,94,.10), 0 10px 28px rgba(0,0,0,.22);
+    }
+
+    .reference-task { background: var(--white); }
+    .reference-thumb { box-shadow: inset 0 0 0 1px rgba(255,255,255,.05); }
+
+    .number-challenge {
+      border-color: rgba(255,255,255,.12);
+      background: var(--white);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.04);
+    }
+    .number-challenge::after { color: var(--muted); }
+    .digits-image { background: var(--soft); }
+    .number-option { box-shadow: 0 8px 24px rgba(0,0,0,.18); }
+
+    .final-screen .final-balance-card {
+      background: var(--white);
+      border-color: var(--border);
+      box-shadow: var(--shadow);
+    }
+    .final-screen .final-balance-label,
+    .final-secure { color: var(--muted); }
+    .final-screen .final-balance { color: var(--blue); }
+    .balance-badge {
+      border-color: var(--green);
+      background: rgba(34,197,94,.055);
+      color: var(--green);
+    }
+    .urgency-timer { color: var(--amber); }
+
+    @keyframes finalCardWin {
+      0% { transform: scale(.975); box-shadow: 0 12px 28px rgba(0,0,0,.18); }
+      15% { transform: scale(1.018); }
+      38% { transform: scale(1.03); box-shadow: 0 18px 42px rgba(59,130,246,.18), 0 0 0 5px rgba(59,130,246,.06); }
+      70% { transform: scale(1.016); }
+      100% { transform: scale(1); box-shadow: var(--shadow); }
+    }
+
+    @keyframes finalGlowBloom {
+      0% { opacity: 0; transform: translate(-50%,-50%) scale(.2); }
+      22% { opacity: 1; }
+      75% { opacity: .72; transform: translate(-50%,-50%) scale(2.2); }
+      100% { opacity: 0; transform: translate(-50%,-50%) scale(2.65); }
+    }
+
+    .final-balance-card.final-winning::before {
+      background: radial-gradient(circle, rgba(59,130,246,.20), rgba(34,197,94,.10) 45%, transparent 72%);
+    }
+    .final-balance.final-rolling { text-shadow: 0 0 22px rgba(59,130,246,.24); }
+
+  </style>
+</head>
+
+<body>
+  <main class="app">
+    <!-- HERO -->
+    <section class="screen hero active" id="screen-1" aria-label="Landing screen" role="button" tabindex="0">
+      <div class="watermark" aria-hidden="true">
+        <span>TASKS TASKS TASKS</span>
+        <span>TASKS TASKS TASKS</span>
+        <span>TASKS TASKS TASKS</span>
+        <span>TASKS TASKS TASKS</span>
+      </div>
+
+      <div class="hero-content">
+        <div class="pill"><span class="dot"></span> AI tasks — session open</div>
+
+        <h1 class="hero-headline">
+          <span class="headline-line">Earn Rewards While</span>
+          <span class="headline-line">Training AI Systems</span>
+          <span class="headline-line"> <span class="blue">From Home</span></span>
+        </h1>
+
+        <p class="hero-sub">
+          Answer simple questions and receive rewards for completed tasks.
+        </p>
+
+        <div class="paid-card" aria-label="Total paid out">
+          <div class="paid-card-main">
+            <div class="paid-label"><span class="paid-dot"></span> TOTAL PAID OUT</div>
+            <div class="paid-value" id="totalPaidCounter">$2,847,465.00</div>
+          </div>
+          <div class="live-badge">LIVE</div>
+        </div>
+
+        <div class="recent-payouts-label">RECENT PAYOUTS</div>
+        <div class="payouts-feed" id="payoutsFeed">
+          <div class="payout-row">
+            <div class="payout-avatar avatar-blue">S</div>
+            <div class="payout-copy"><strong>Sandra J.</strong><span>just earned</span></div>
+            <div class="payout-amount">+$40.92</div>
+          </div>
+          <div class="payout-row">
+            <div class="payout-avatar avatar-blue">S</div>
+            <div class="payout-copy"><strong>Sarah K.</strong><span>just earned</span></div>
+            <div class="payout-amount">+$31.00</div>
+          </div>
+          <div class="payout-row">
+            <div class="payout-avatar avatar-green">J</div>
+            <div class="payout-copy"><strong>James R.</strong><span>just earned</span></div>
+            <div class="payout-amount">+$19.00</div>
+          </div>
+        </div>
+
+        <button class="cta" type="button" onclick="event.stopPropagation(); goToScreen(2)">Start Earning →</button>
+        <div class="micro">Takes less than 30 seconds to complete.</div>
+      </div>
+    </section>
+
+    <!-- TASK 1 -->
+    <section class="screen task-screen" id="screen-2" aria-label="Task 1 of 3">
+      <div class="task-header">
+        <div class="progress-wrap">
+          <div class="task-kicker">Task 1 of 3</div>
+          <div class="progress-track" aria-label="Progress 1 of 3">
+            <div class="progress-segment current"></div>
+            <div class="progress-segment"></div>
+            <div class="progress-segment"></div>
+          </div>
+        </div>
+        <div class="earnings">
+          <div class="earnings-label">Task balance</div>
+          <div class="earnings-value" data-balance="">$0.00</div>
+        </div>
+      </div>
+
+      <div class="task-card">
+        <div class="task-label"><span class="dot"></span> Image review</div>
+        <div class="question">Which image was made by AI?</div>
+        <div class="question-note">Tap the image that looks <strong>AI-generated</strong>.</div>
+      </div>
+
+      <div class="image-grid" id="answers-1">
+        <button class="image-option" type="button" onclick="submitTask(this, 1, 0)" aria-label="Option A, normal rabbit">
+          <span class="visual">
+            <img src="images/rabbit1.png" alt="Normal rabbit" loading="eager" decoding="async">
+          </span>
+          <span class="option-footer"><span>Image A</span><span class="option-letter">A</span></span>
+        </button>
+
+        <button class="image-option" type="button" onclick="submitTask(this, 1, 1)" aria-label="Option B, AI-generated rabbit">
+          <span class="visual">
+            <img src="images/rabbit.png" alt="AI-generated rabbit" loading="eager" decoding="async">
+          </span>
+          <span class="option-footer"><span>Image B</span><span class="option-letter">B</span></span>
+        </button>
+      </div>
+
+      <div class="status-line" id="status-1">Task submitted ✓</div>
+      <div class="tap-helper">Choose one image to submit the task.</div>
+    </section>
+
+    <!-- TASK 2 -->
+    <section class="screen task-screen" id="screen-3" aria-label="Task 2 of 3">
+      <div class="task-header">
+        <div class="progress-wrap">
+          <div class="task-kicker">Task 2 of 3</div>
+          <div class="progress-track" aria-label="Progress 2 of 3">
+            <div class="progress-segment done"></div>
+            <div class="progress-segment current"></div>
+            <div class="progress-segment"></div>
+          </div>
+        </div>
+        <div class="earnings">
+          <div class="earnings-label">Task balance</div>
+          <div class="earnings-value" data-balance="">$0.00</div>
+        </div>
+      </div>
+
+      <div class="task-card">
+        <div class="task-label"><span class="dot"></span> Visual matching</div>
+        <div class="question">Which option contains the same type of animal?</div>
+        <div class="question-note">Look at the reference image, then select the matching category below.</div>
+        <div class="reference-task" aria-label="Reference image">
+          <div class="reference-thumb">
+            <img src="images/cat1.png" alt="Reference image showing cats" loading="eager" decoding="async">
+          </div>
+          <div class="reference-meta">
+            <div class="reference-kicker">Reference image</div>
+            <div class="reference-copy">Find the option that shows the same type of animal.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="image-grid three-options" id="answers-2">
+        <button class="image-option" type="button" onclick="submitTask(this, 2, 0)" aria-label="Option A, dog">
+          <span class="visual">
+            <img src="images/9.png" alt="Dog" loading="eager" decoding="async">
+          </span>
+          <span class="option-footer"><span>Image A</span><span class="option-letter">A</span></span>
+        </button>
+
+        <button class="image-option" type="button" onclick="submitTask(this, 2, 1)" aria-label="Option B, city street">
+          <span class="visual">
+            <img src="images/1.png" alt="City street" loading="eager" decoding="async">
+          </span>
+          <span class="option-footer"><span>Image B</span><span class="option-letter">B</span></span>
+        </button>
+
+        <button class="image-option" type="button" onclick="submitTask(this, 2, 2)" aria-label="Option C, cat">
+          <span class="visual">
+            <img src="images/2.png" alt="Cat" loading="eager" decoding="async">
+          </span>
+          <span class="option-footer"><span>Image C</span><span class="option-letter">C</span></span>
+        </button>
+      </div>
+
+      <div class="status-line" id="status-2">Task submitted ✓</div>
+      <div class="tap-helper">Compare the reference with the three options.</div>
+    </section>
+
+    <!-- TASK 3 -->
+    <section class="screen task-screen" id="screen-4" aria-label="Task 3 of 3">
+      <div class="task-header">
+        <div class="progress-wrap">
+          <div class="task-kicker">Task 3 of 3</div>
+          <div class="progress-track" aria-label="Progress 3 of 3">
+            <div class="progress-segment done"></div>
+            <div class="progress-segment done"></div>
+            <div class="progress-segment current"></div>
+          </div>
+        </div>
+        <div class="earnings">
+          <div class="earnings-label">Task balance</div>
+          <div class="earnings-value" data-balance="">$0.00</div>
+        </div>
+      </div>
+
+      <div class="task-card">
+        <div class="task-label"><span class="dot"></span> Number verification</div>
+        <div class="question">Which 4-digit number do you see?</div>
+        <div class="question-note">Read the distorted code and select the matching number.</div>
+        <div class="number-challenge">
+          <img src="images/digits.png" class="digits-image" alt="Distorted four digit number 2954" loading="eager" decoding="async">
+        </div>
+      </div>
+
+      <div class="number-options" id="answers-3">
+        <button class="number-option" id="numberOptionA" type="button" onclick="submitTask(this, 3, 0)">----</button>
+        <button class="number-option" id="numberOptionB" type="button" onclick="submitTask(this, 3, 1)">----</button>
+      </div>
+
+      <div class="status-line" id="status-3">Task submitted ✓</div>
+      <div class="tap-helper">Choose the number that matches the code above.</div>
+    </section>
+
+    <!-- FINAL -->
+    <section class="screen final-screen" id="screen-5" aria-label="Tasks completed">
+      <div class="final-content">
+        <div class="final-kicker">SESSION COMPLETE</div>
+        <div class="final-copy final-verified-copy">Your AI training session has been verified.</div>
+
+        <div class="final-balance-card">
+          <div class="final-balance-label">YOUR EARNED BALANCE</div>
+          <div class="final-balance" id="finalBalance">$0.00</div>
+          <div class="balance-badges">
+            <div class="balance-badge"><span>●</span> Verified</div>
+            <div class="balance-badge"><span>●</span> Ready for Transfer</div>
+          </div>
+        </div>
+
+        <div class="final-title">Claim Your Balance Now</div>
+        <div class="final-copy claim-copy">Watch a quick 2-minute video to unlock your payout. Thousands of people are scaling this into $500+ per day.</div>
+
+        <button class="cta final-cta" type="button" id="claimButton" onclick="continueFlow()">Claim Your $0.00 Now →</button>
+        <div class="urgency-timer" id="urgencyTimer">⚠ Balance expires in 01:00</div>
+        <div class="final-secure">🔒 Secure payout • Instant transfer</div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const IS_IOS = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+      (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+
+    if (IS_IOS) document.documentElement.classList.add('is-ios');
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+
+    let currentScreen = 1;
+    let currentBalance = 0;
+    let locked = false;
+    let finalTimer = null;
+    let finalSeconds = 60;
+    let totalPaidInterval = null;
+    let payoutsInterval = null;
+    let payoutColorIndex = 0;
+    const answered = [false, false, false];
+
+    const payoutFirstNames = [
+      'Michael', 'Jennifer', 'Robert', 'Patricia', 'David', 'Karen',
+      'Daniel', 'Nancy', 'Mark', 'Lisa', 'Thomas', 'Betty',
+      'Charles', 'Sandra', 'Paul', 'Kevin', 'Dorothy', 'Brian',
+      'Helen', 'George', 'Donna', 'Edward', 'Carol', 'Ronald', 'Ruth'
+    ];
+
+    const payoutAvatarColors = ['#3b82f6', '#22c55e', '#f59e0b', '#8b5cf6', '#ef4444'];
+
+    // Replace these demo values with the real reward values from your backend/campaign.
+    const TASK_REWARDS = [9.85, 11.40, 12.65];
+
+    let moneyAudioContext = null;
+    let moneySoundUnlocked = false;
+
+    function ensureMoneyAudio() {
+      try {
+        if (!moneyAudioContext) {
+          const AudioCtx = window.AudioContext || window.webkitAudioContext;
+          if (!AudioCtx) return null;
+          moneyAudioContext = new AudioCtx();
+        }
+        if (moneyAudioContext.state === 'suspended') moneyAudioContext.resume();
+        moneySoundUnlocked = true;
+        return moneyAudioContext;
+      } catch (e) {
+        return null;
+      }
+    }
+
+    function playCoinTick(strength, pitchOffset) {
+      const ctx = ensureMoneyAudio();
+      if (!ctx || !moneySoundUnlocked) return;
+
+      const now = ctx.currentTime;
+      const gain = ctx.createGain();
+      const osc1 = ctx.createOscillator();
+      const osc2 = ctx.createOscillator();
+      const strengthSafe = Math.max(.25, Math.min(1.2, strength || .6));
+      const pitch = 980 + (pitchOffset || 0);
+
+      osc1.type = 'sine';
+      osc2.type = 'triangle';
+      osc1.frequency.setValueAtTime(pitch, now);
+      osc1.frequency.exponentialRampToValueAtTime(pitch * 1.48, now + .055);
+      osc2.frequency.setValueAtTime(pitch * 1.85, now);
+      osc2.frequency.exponentialRampToValueAtTime(pitch * 1.22, now + .07);
+
+      gain.gain.setValueAtTime(.0001, now);
+      gain.gain.exponentialRampToValueAtTime(.035 * strengthSafe, now + .008);
+      gain.gain.exponentialRampToValueAtTime(.0001, now + .095);
+
+      osc1.connect(gain);
+      osc2.connect(gain);
+      gain.connect(ctx.destination);
+      osc1.start(now);
+      osc2.start(now);
+      osc1.stop(now + .11);
+      osc2.stop(now + .11);
+    }
+
+    function playCashLand() {
+      const ctx = ensureMoneyAudio();
+      if (!ctx || !moneySoundUnlocked) return;
+      [0, .075, .16].forEach(function(delay, i) {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        const now = ctx.currentTime + delay;
+        osc.type = i === 2 ? 'triangle' : 'sine';
+        osc.frequency.setValueAtTime([880, 1175, 1568][i], now);
+        osc.frequency.exponentialRampToValueAtTime([1180, 1480, 1760][i], now + .11);
+        gain.gain.setValueAtTime(.0001, now);
+        gain.gain.exponentialRampToValueAtTime(i === 2 ? .07 : .055, now + .01);
+        gain.gain.exponentialRampToValueAtTime(.0001, now + .22);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(now);
+        osc.stop(now + .24);
+      });
+    }
+
+    function burstMoneyParticles(targetEl, count) {
+      if (!targetEl || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      const rect = targetEl.getBoundingClientRect();
+      const cx = rect.left + rect.width * .55;
+      const cy = rect.top + rect.height * .55;
+      const total = count || 7;
+
+      for (let i = 0; i < total; i++) {
+        const p = document.createElement('span');
+        p.className = 'money-particle';
+        p.textContent = i % 3 === 0 ? '$' : '+';
+        p.style.left = (cx + (Math.random() - .5) * 32) + 'px';
+        p.style.top = (cy + (Math.random() - .5) * 18) + 'px';
+        p.style.setProperty('--dx', ((Math.random() - .5) * 125) + 'px');
+        p.style.setProperty('--dy', (-55 - Math.random() * 72) + 'px');
+        p.style.setProperty('--rot', ((Math.random() - .5) * 54) + 'deg');
+        p.style.animationDelay = (Math.random() * .12) + 's';
+        document.body.appendChild(p);
+        setTimeout(function() { p.remove(); }, 1250);
+      }
+    }
+
+    function money(value) {
+      return '$' + value.toLocaleString('en-US', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      });
+    }
+
+    function goToScreen(screenNum) {
+      const activeElement = document.activeElement;
+      if (activeElement && typeof activeElement.blur === 'function') activeElement.blur();
+
+      document.querySelectorAll('.screen').forEach(function(screen) {
+        screen.classList.remove('active');
+      });
+
+      const next = document.getElementById('screen-' + screenNum);
+      if (!next) return;
+
+      next.classList.add('active');
+      currentScreen = screenNum;
+
+      // Numeric scrollTo is the most compatible path on older iOS Safari.
+      // Running it on the next frame avoids fighting the display:flex layout swap.
+      requestAnimationFrame(function() {
+        window.scrollTo(0, 0);
+      });
+
+      syncBalance();
+
+      if (screenNum === 1) {
+        startHeroLiveActivity();
+      } else {
+        stopHeroLiveActivity();
+      }
+
+      if (screenNum === 5) {
+        updateClaimButton();
+        startFinalTimer();
+      }
+    }
+
+    function syncBalance() {
+      document.querySelectorAll('[data-balance]').forEach(function(el) {
+        el.textContent = money(currentBalance);
+      });
+    }
+
+    function submitTask(element, taskNum, optionNum) {
+      if (locked || answered[taskNum - 1]) return;
+
+      locked = true;
+      answered[taskNum - 1] = true;
+      element.classList.add('selected');
+
+      const group = element.parentElement;
+      group.querySelectorAll('.image-option, .number-option').forEach(function(option) {
+        option.disabled = true;
+      });
+
+      const status = document.getElementById('status-' + taskNum);
+      if (status) status.classList.add('show');
+
+      const start = currentBalance;
+      const target = +(currentBalance + TASK_REWARDS[taskNum - 1]).toFixed(2);
+
+      animateRollingBalance(start, target, function() {
+        currentBalance = target;
+
+        setTimeout(function() {
+          locked = false;
+          if (taskNum < 3) {
+            goToScreen(taskNum + 2);
+          } else {
+            goToScreen(5);
+            animateFinalBalance(target);
+          }
+        }, 320);
+      });
+    }
+
+    function animateRollingBalance(from, to, done) {
+      const els = document.querySelectorAll('.screen.active [data-balance]');
+      const card = document.querySelector('.screen.active .earnings');
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      ensureMoneyAudio();
+
+      els.forEach(function(el) {
+        el.classList.remove('rolling');
+        void el.offsetWidth;
+        el.classList.add('rolling');
+      });
+
+      if (card) {
+        card.classList.remove('money-active');
+        void card.offsetWidth;
+        card.classList.add('money-active');
+        burstMoneyParticles(card, 7);
+      }
+
+      const duration = reduced ? 150 : 1350;
+      const startTime = performance.now();
+      const overshoot = to + Math.max(2.1, (to - from) * .36);
+      let lastSoundAt = 0;
+
+      function easeOutCubic(t) {
+        return 1 - Math.pow(1 - t, 3);
+      }
+
+      function frame(now) {
+        const elapsed = now - startTime;
+        const p = Math.min(elapsed / duration, 1);
+        let value;
+
+        if (p < .62) {
+          const firstP = p / .62;
+          value = from + (overshoot - from) * easeOutCubic(firstP);
+        } else {
+          const secondP = (p - .62) / .38;
+          const settle = 1 - Math.pow(1 - secondP, 4);
+          value = overshoot + (to - overshoot) * settle;
+        }
+
+        if (!reduced && p < .88) {
+          const jitterScale = (1 - p) * .78;
+          value += (Math.random() - .5) * jitterScale;
+        }
+
+        const taskSoundGap = IS_IOS ? (p < .55 ? 135 : 170) : (p < .55 ? 92 : 128);
+        if (!reduced && elapsed - lastSoundAt > taskSoundGap) {
+          lastSoundAt = elapsed;
+          playCoinTick(.58 + p * .28, Math.round(p * 420) + Math.random() * 85);
+        }
+
+        const safeValue = Math.max(0, value);
+        els.forEach(function(el) { el.textContent = money(safeValue); });
+
+        if (p < 1) {
+          requestAnimationFrame(frame);
+        } else {
+          els.forEach(function(el) {
+            el.textContent = money(to);
+            el.classList.remove('rolling');
+          });
+          if (card) card.classList.remove('money-active');
+          playCashLand();
+          if (done) done();
+        }
+      }
+
+      requestAnimationFrame(frame);
+    }
+
+    function animateFinalBalance(target) {
+      const el = document.getElementById('finalBalance');
+      const card = el ? el.closest('.final-balance-card') : null;
+      if (!el) return;
+
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const duration = reduced ? 180 : 3400;
+      const start = performance.now();
+      const overshoot = target + Math.max(3.2, target * .16);
+      let lastSoundAt = 0;
+
+      ensureMoneyAudio();
+
+      el.classList.remove('final-landed');
+      el.classList.add('final-rolling');
+      if (card) {
+        card.classList.remove('final-winning');
+        void card.offsetWidth;
+        card.classList.add('final-winning');
+        burstMoneyParticles(card, 12);
+      }
+
+      function easeOutQuint(t) {
+        return 1 - Math.pow(1 - t, 5);
+      }
+
+      function easeInOut(t) {
+        return t < .5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+      }
+
+      function frame(now) {
+        const elapsed = now - start;
+        const p = Math.min(elapsed / duration, 1);
+        let value;
+
+        if (p < .58) {
+          const phase = p / .58;
+          value = overshoot * easeOutQuint(phase);
+          if (!reduced) value += (Math.random() - .5) * Math.max(.35, target * .035 * (1 - phase * .4));
+        } else if (p < .82) {
+          const phase = (p - .58) / .24;
+          const low = target * .965;
+          value = overshoot + (low - overshoot) * easeInOut(phase);
+          if (!reduced) value += (Math.random() - .5) * .5;
+        } else {
+          const phase = (p - .82) / .18;
+          const low = target * .965;
+          value = low + (target - low) * easeOutQuint(phase);
+        }
+
+        const finalSoundGap = IS_IOS ? (p < .6 ? 135 : p < .84 ? 165 : 195) : (p < .6 ? 86 : p < .84 ? 112 : 150);
+        if (!reduced && elapsed - lastSoundAt > finalSoundGap) {
+          lastSoundAt = elapsed;
+          playCoinTick(.62 + p * .38, 80 + Math.round(p * 780) + Math.random() * 95);
+        }
+
+        el.textContent = money(Math.max(0, value));
+
+        if (p < 1) {
+          requestAnimationFrame(frame);
+        } else {
+          el.textContent = money(target);
+          el.classList.remove('final-rolling');
+          void el.offsetWidth;
+          el.classList.add('final-landed');
+          playCashLand();
+          burstMoneyParticles(card || el, 15);
+          setTimeout(function() {
+            if (card) card.classList.remove('final-winning');
+          }, 800);
+        }
+      }
+
+      requestAnimationFrame(frame);
+    }
+
+    function updateClaimButton() {
+      const button = document.getElementById('claimButton');
+      if (button) button.textContent = 'Claim Your ' + money(currentBalance) + ' Now →';
+    }
+
+    function startFinalTimer() {
+      if (finalTimer) clearInterval(finalTimer);
+      finalSeconds = 60;
+
+      function renderTimer() {
+        const el = document.getElementById('urgencyTimer');
+        if (!el) return;
+        const minutes = Math.floor(finalSeconds / 60);
+        const seconds = finalSeconds % 60;
+        el.textContent = '⚠ Balance expires in ' + String(minutes).padStart(2, '0') + ':' + String(seconds).padStart(2, '0');
+        if (finalSeconds > 0) finalSeconds -= 1;
+      }
+
+      renderTimer();
+      finalTimer = setInterval(renderTimer, 1000);
+    }
+
+    function animateTotalPaidCounter() {
+      const counter = document.getElementById('totalPaidCounter');
+      if (!counter) return;
+
+      const parsed = Number(counter.textContent.replace(/[^0-9.]/g, ''));
+      let currentValue = Number.isFinite(parsed) ? parsed : 2847392;
+
+      function updateCounter() {
+        const increment = Math.floor(Math.random() * 35) + 12;
+        currentValue += increment;
+
+        counter.textContent = '$' + currentValue.toLocaleString('en-US', {
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2
+        });
+
+        counter.style.animation = 'none';
+        void counter.offsetWidth;
+        counter.style.animation = 'scalePop 400ms ease';
+      }
+
+      if (totalPaidInterval) clearInterval(totalPaidInterval);
+      totalPaidInterval = setInterval(updateCounter, 4000);
+    }
+
+    function startPayoutsFeed() {
+      const feed = document.getElementById('payoutsFeed');
+      if (!feed) return;
+
+      if (payoutsInterval) clearInterval(payoutsInterval);
+
+      payoutsInterval = setInterval(function() {
+        const firstName = payoutFirstNames[Math.floor(Math.random() * payoutFirstNames.length)];
+        const lastInitial = String.fromCharCode(65 + Math.floor(Math.random() * 26));
+        const amount = (Math.random() * 38 + 14).toFixed(2);
+        const color = payoutAvatarColors[payoutColorIndex % payoutAvatarColors.length];
+        payoutColorIndex += 1;
+
+        const entry = document.createElement('div');
+        entry.className = 'payout-row';
+        entry.innerHTML =
+          '<div class="payout-avatar" style="background:' + color + ';">' + firstName[0] + '</div>' +
+          '<div class="payout-copy"><strong>' + firstName + ' ' + lastInitial + '.</strong><span>just earned</span></div>' +
+          '<div class="payout-amount">+$' + amount + '</div>';
+
+        feed.insertBefore(entry, feed.firstChild);
+
+        const entries = feed.querySelectorAll('.payout-row');
+        if (entries.length > 5) entries[entries.length - 1].remove();
+      }, 5000);
+    }
+
+    function enableHeroKeyboardStart() {
+      const hero = document.getElementById('screen-1');
+      if (!hero) return;
+
+      hero.addEventListener('keydown', function(event) {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          goToScreen(2);
+        }
+      });
+    }
+
+    function startHeroLiveActivity() {
+      animateTotalPaidCounter();
+      startPayoutsFeed();
+    }
+
+    function stopHeroLiveActivity() {
+      if (totalPaidInterval) {
+        clearInterval(totalPaidInterval);
+        totalPaidInterval = null;
+      }
+      if (payoutsInterval) {
+        clearInterval(payoutsInterval);
+        payoutsInterval = null;
+      }
+    }
+
+    function initHeroLiveActivity() {
+      startHeroLiveActivity();
+      enableHeroKeyboardStart();
+
+      const hero = document.getElementById('screen-1');
+      if (hero) {
+        hero.addEventListener('click', function(event) {
+          if (event.target.closest('button')) return;
+          goToScreen(2);
+        });
+      }
+
+      document.addEventListener('pointerdown', function unlockOnce() {
+        ensureMoneyAudio();
+      }, { once: true, passive: true });
+
+      document.addEventListener('keydown', function unlockKeyOnce() {
+        ensureMoneyAudio();
+      }, { once: true });
+    }
+
+    function initNumberTask() {
+      const optionA = document.getElementById('numberOptionA');
+      const optionB = document.getElementById('numberOptionB');
+      if (!optionA || !optionB) return;
+
+      const code = '2954';
+      const wrongCode = '2957';
+      const options = Math.random() < .5 ? [code, wrongCode] : [wrongCode, code];
+
+      optionA.textContent = options[0];
+      optionB.textContent = options[1];
+      optionA.setAttribute('aria-label', 'Number option ' + options[0]);
+      optionB.setAttribute('aria-label', 'Number option ' + options[1]);
+    }
+
+    function continueFlow() {
+      const vslLink = 'https://wellnessdaily.lifestyle/pv11/vsl/' + window.location.search;
+      window.location.href = vslLink;
+    }
+
+    window.addEventListener('pageshow', function() {
+      if (currentScreen === 1) {
+        requestAnimationFrame(function() { window.scrollTo(0, 0); });
+      }
+    });
+
+    syncBalance();
+    initNumberTask();
+    initHeroLiveActivity();
+  </script>
+
+</body></html>
