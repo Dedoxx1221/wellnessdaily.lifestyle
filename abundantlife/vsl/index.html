@@ -450,7 +450,7 @@ snaptr('track', 'PAGE_VIEW');
 </div>
 </div>
 <div class="dropZoneForSections ui-droppable" style="display: none;"><div class="dropIconr"><i class="fa fa-plus"></i></div></div>
-<div class="container fullContainer noTopMargin padding20-top padding20-bottom padding40H noBorder borderSolid border3px cornersAll radius0 shadow0 bgNoRepeat emptySection fade containerWithVisibleOverflow" id="section--81426-172" data-title="Section - Clone" data-block-color="0074C7" style="padding-top: 20px; padding-bottom: 20px; outline: none; background-color: rgb(255, 255, 255);" data-trigger="none" data-animate="fade" data-delay="500" data-timed-style="fade" data-timed-minutes="22" data-timed-seconds="00">
+<div class="container fullContainer noTopMargin padding20-top padding20-bottom padding40H noBorder borderSolid border3px cornersAll radius0 shadow0 bgNoRepeat emptySection fade containerWithVisibleOverflow esconder" id="section--81426-172" data-title="Section - Clone" data-block-color="0074C7" style="padding-top: 20px; padding-bottom: 20px; outline: none; background-color: rgb(255, 255, 255);" data-trigger="none" data-animate="fade" data-delay="500">
 <div class="containerInner ui-sortable">
 <div class="row bgCover noBorder borderSolid border3px cornersAll radius0 shadow0 P0-top P0-bottom P0H noTopMargin no-action" id="row--77893-182" data-trigger="none" data-animate="fade" data-delay="500" data-title="1 column row" style="padding-top: 20px; padding-bottom: 20px; margin: 0px auto; outline: none; width: 65%; max-width: 100%;" data-timed-minutes="19" data-timed-seconds="17" data-timed-style="no-action">
 <div id="col-full-150-172" class="col-md-12 innerContent col_left" data-col="full" data-trigger="none" data-animate="fade" data-delay="500" data-title="1st column" style="outline: none;">
@@ -1690,25 +1690,21 @@ var lastOffset = 0;
 
 }, 1000);</script>
 
+<style>
+  .esconder {
+    display: none;
+  }
+</style>
 <script>
-  $(document).ready(function() {
-    // Create a unique key for this page
-    var pageKey = 'cf_pop_revealed_' + window.location.pathname;
-    
-    // 1. CHECK: Did the user previously stay for the full 22 minutes?
-    if (localStorage.getItem(pageKey)) {
-        // YES: Show everything immediately
-        $('[data-timed-style]').each(function() {
-            $(this).attr('data-timed-style', '').css('display', 'block');
-        });
-    } else {
-        // NO: New visitor. Wait 22 minutes before saving the "memory".
-        // 22 mins * 60 sec * 1000 ms = 1,320,000 ms
-        setTimeout(function() {
-            localStorage.setItem(pageKey, 'true');
-        }, 1320000); 
-    }
-  });
+  var delaySeconds = 1433;
+  var player = document.querySelector("vturb-smartplayer#vid-6aa4565effd4e8088f369814");
+  if (player) {
+    player.addEventListener("player:ready", function() {
+      player.displayHiddenElements(delaySeconds, [".esconder"], {
+        persist: true
+      });
+    });
+  }
 </script>
 
 
