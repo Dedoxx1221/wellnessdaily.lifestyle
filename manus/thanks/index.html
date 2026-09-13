@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gracias por tu compra | Cocina Práctica</title>
+  <meta name="description" content="Página de confirmación de compra y acceso a los productos digitales de Cocina Práctica." />
+  <style>
+    :root{
+      --cream:#fbf4ea;
+      --cream-2:#f6eadc;
+      --ink:#1f221f;
+      --green:#164f3a;
+      --green-2:#2f8d6d;
+      --coral:#ea5a38;
+      --coral-dark:#c94327;
+      --gold:#e5b85f;
+      --white:#ffffff;
+      --muted:#6f746f;
+      --line:rgba(31,34,31,.10);
+      --shadow:0 18px 50px rgba(43,37,28,.12);
+      --radius:28px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color:var(--ink);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(234,90,56,.10), transparent 30%),
+        radial-gradient(circle at 90% 10%, rgba(47,141,109,.10), transparent 35%),
+        var(--cream);
+      line-height:1.55;
+    }
+
+    .topbar{
+      background:var(--green);
+      color:#fff;
+      text-align:center;
+      padding:10px 16px;
+      font-size:14px;
+      font-weight:700;
+      letter-spacing:.02em;
+    }
+
+    .wrap{
+      width:min(1120px, calc(100% - 32px));
+      margin:0 auto;
+    }
+
+    header{
+      padding:22px 0;
+      border-bottom:1px solid var(--line);
+      background:rgba(251,244,234,.86);
+      backdrop-filter:blur(14px);
+      position:sticky;
+      top:0;
+      z-index:20;
+    }
+
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:900;
+      font-size:22px;
+      color:var(--green);
+      text-decoration:none;
+    }
+
+    .brand-mark{
+      width:42px;
+      height:42px;
+      border:2px solid var(--coral);
+      border-radius:14px;
+      display:grid;
+      place-items:center;
+      color:var(--coral);
+      font-size:22px;
+      background:#fff8f3;
+    }
+
+    .secure-mini{
+      font-size:13px;
+      color:var(--muted);
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+
+    .hero{
+      padding:72px 0 44px;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.15fr .85fr;
+      gap:40px;
+      align-items:center;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      color:var(--green);
+      background:rgba(47,141,109,.10);
+      border:1px solid rgba(47,141,109,.20);
+      padding:8px 12px;
+      border-radius:999px;
+      font-weight:800;
+      font-size:13px;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      margin-bottom:18px;
+    }
+
+    h1{
+      font-size:clamp(42px, 7vw, 78px);
+      line-height:.98;
+      letter-spacing:-.045em;
+      margin:0 0 18px;
+    }
+
+    .accent{
+      color:var(--coral);
+    }
+
+    .lead{
+      font-size:clamp(18px,2.2vw,23px);
+      color:#4f554f;
+      max-width:760px;
+      margin:0 0 26px;
+    }
+
+    .notice{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:20px;
+      padding:18px 20px;
+      display:flex;
+      gap:14px;
+      align-items:flex-start;
+      box-shadow:0 12px 30px rgba(43,37,28,.07);
+      max-width:760px;
+    }
+
+    .notice .icon{
+      width:42px;
+      height:42px;
+      border-radius:12px;
+      background:#fff2ee;
+      color:var(--coral-dark);
+      display:grid;
+      place-items:center;
+      flex:0 0 42px;
+      font-size:20px;
+    }
+
+    .notice strong{display:block;margin-bottom:2px}
+    .notice p{margin:0;color:#656a65}
+
+    .hero-card{
+      background:linear-gradient(145deg,#154a37,#0f382a);
+      color:white;
+      border-radius:34px;
+      padding:34px;
+      box-shadow:var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .hero-card:before{
+      content:"";
+      position:absolute;
+      width:220px;height:220px;
+      border-radius:50%;
+      background:rgba(255,255,255,.06);
+      top:-90px;right:-60px;
+    }
+
+    .check{
+      width:78px;
+      height:78px;
+      border-radius:50%;
+      background:var(--coral);
+      display:grid;
+      place-items:center;
+      font-size:38px;
+      font-weight:900;
+      margin-bottom:22px;
+      box-shadow:0 12px 30px rgba(234,90,56,.28);
+    }
+
+    .hero-card h2{
+      font-size:30px;
+      line-height:1.12;
+      margin:0 0 10px;
+    }
+
+    .hero-card p{
+      margin:0;
+      color:rgba(255,255,255,.82);
+      font-size:16px;
+    }
+
+    .steps{
+      padding:36px 0 74px;
+    }
+
+    .section-title{
+      text-align:center;
+      max-width:760px;
+      margin:0 auto 32px;
+    }
+
+    .section-title h2{
+      margin:0 0 10px;
+      font-size:clamp(30px,4vw,46px);
+      letter-spacing:-.03em;
+    }
+
+    .section-title p{
+      margin:0;
+      color:var(--muted);
+      font-size:18px;
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:20px;
+    }
+
+    .card{
+      background:rgba(255,255,255,.78);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:28px;
+      box-shadow:0 14px 40px rgba(43,37,28,.06);
+    }
+
+    .num{
+      width:46px;
+      height:46px;
+      border-radius:14px;
+      background:var(--cream-2);
+      color:var(--coral-dark);
+      display:grid;
+      place-items:center;
+      font-weight:900;
+      margin-bottom:18px;
+    }
+
+    .card h3{
+      margin:0 0 8px;
+      font-size:22px;
+    }
+
+    .card p{
+      margin:0;
+      color:var(--muted);
+    }
+
+    .access{
+      padding:0 0 74px;
+    }
+
+    .access-box{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:34px;
+      padding:38px;
+      box-shadow:var(--shadow);
+      display:grid;
+      grid-template-columns:1fr .8fr;
+      gap:30px;
+      align-items:center;
+    }
+
+    .mail-icon{
+      width:72px;height:72px;
+      border-radius:22px;
+      background:#eef8f4;
+      color:var(--green);
+      display:grid;
+      place-items:center;
+      font-size:32px;
+      margin-bottom:20px;
+    }
+
+    .access-box h2{
+      margin:0 0 10px;
+      font-size:38px;
+      letter-spacing:-.03em;
+    }
+
+    .access-box p{
+      margin:0;
+      color:var(--muted);
+      font-size:18px;
+    }
+
+    .tips{
+      background:var(--cream);
+      border-radius:24px;
+      padding:24px;
+      border:1px dashed rgba(31,34,31,.18);
+    }
+
+    .tips ul{
+      margin:0;
+      padding-left:20px;
+      color:#4e544e;
+    }
+
+    .tips li+li{margin-top:10px}
+
+    .digistore{
+      padding:0 0 84px;
+    }
+
+    .seal{
+      background:linear-gradient(135deg,#ffffff,#f7fbff);
+      border:1px solid #dce4ea;
+      border-radius:28px;
+      padding:28px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+      box-shadow:0 14px 40px rgba(36,58,82,.08);
+    }
+
+    .seal-left{
+      display:flex;
+      align-items:center;
+      gap:18px;
+    }
+
+    .shield{
+      width:58px;height:58px;
+      border-radius:18px;
+      background:#eaf4ff;
+      color:#1769aa;
+      display:grid;
+      place-items:center;
+      font-size:26px;
+      font-weight:900;
+    }
+
+    .digistore-logo{
+      font-size:28px;
+      font-weight:900;
+      letter-spacing:-.03em;
+      color:#1d2a39;
+    }
+
+    .digistore-logo span{color:#1d70b7}
+
+    .seal small{
+      display:block;
+      color:#78818a;
+      margin-top:4px;
+    }
+
+    .seal-badge{
+      color:var(--green);
+      background:#eaf7f1;
+      border:1px solid #d4ebdf;
+      padding:10px 14px;
+      border-radius:999px;
+      font-weight:800;
+      white-space:nowrap;
+    }
+
+    footer{
+      background:#103a2c;
+      color:white;
+      padding:34px 0;
+    }
+
+    .footer-row{
+      display:flex;
+      justify-content:space-between;
+      gap:24px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+
+    .footer-row p{
+      margin:0;
+      color:rgba(255,255,255,.72);
+      font-size:14px;
+    }
+
+    @media (max-width: 860px){
+      .hero-grid,.access-box{grid-template-columns:1fr}
+      .cards{grid-template-columns:1fr}
+      .hero{padding-top:48px}
+      .seal{align-items:flex-start;flex-direction:column}
+      .secure-mini{display:none}
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">Compra confirmada con éxito</div>
+
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#">
+        <span class="brand-mark">🍳</span>
+        <span>Cocina Práctica</span>
+      </a>
+      <div class="secure-mini">🔒 Entorno de compra seguro</div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow">✓ Pedido confirmado</div>
+          <h1>¡Gracias por tu <span class="accent">compra!</span></h1>
+          <p class="lead">Tu pedido fue recibido correctamente. En unos minutos recibirás por e-mail las instrucciones para acceder a tus productos digitales.</p>
+
+          <div class="notice">
+            <div class="icon">💳</div>
+            <div>
+              <strong>Importante sobre el cargo</strong>
+              <p>La cobranza se realizará a través de <strong>Digistore24</strong>.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <div class="check">✓</div>
+          <h2>Tu acceso está en camino</h2>
+          <p>Revisa el e-mail utilizado durante la compra. Allí recibirás la información necesaria para acceder a tu contenido.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="steps">
+      <div class="wrap">
+        <div class="section-title">
+          <h2>Qué sucede ahora</h2>
+          <p>El acceso es digital y se envía por correo electrónico.</p>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <div class="num">01</div>
+            <h3>Revisa tu e-mail</h3>
+            <p>Busca el mensaje enviado a la dirección que utilizaste al finalizar tu compra.</p>
+          </article>
+
+          <article class="card">
+            <div class="num">02</div>
+            <h3>Abre las instrucciones</h3>
+            <p>Dentro del correo encontrarás los datos y enlaces necesarios para acceder a tus productos.</p>
+          </article>
+
+          <article class="card">
+            <div class="num">03</div>
+            <h3>Disfruta tu contenido</h3>
+            <p>Guarda el mensaje de acceso para poder consultar nuevamente tus materiales cuando lo necesites.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="access">
+      <div class="wrap">
+        <div class="access-box">
+          <div>
+            <div class="mail-icon">✉</div>
+            <h2>¿No ves el e-mail?</h2>
+            <p>La entrega puede tardar algunos minutos dependiendo de tu proveedor de correo.</p>
+          </div>
+          <div class="tips">
+            <ul>
+              <li>Revisa las carpetas de <strong>Spam</strong>, <strong>Promociones</strong> o <strong>Correo no deseado</strong>.</li>
+              <li>Confirma que estás revisando la misma dirección utilizada en la compra.</li>
+              <li>Conserva el correo de acceso para futuras consultas.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="digistore">
+      <div class="wrap">
+        <div class="seal">
+          <div class="seal-left">
+            <div class="shield">✓</div>
+            <div>
+              <div class="digistore-logo"><span>digistore</span>24</div>
+              <small>Procesamiento seguro de pagos</small>
+            </div>
+          </div>
+          <div class="seal-badge">Compra procesada con seguridad</div>
+        </div>
+
+        <!--
+          SELLO OFICIAL DIGISTORE24:
+          Si Digistore24 te proporciona un código/embed oficial del sello,
+          reemplaza o inserta ese código en esta sección.
+        -->
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-row">
+      <div class="brand" style="color:white">
+        <span class="brand-mark" style="background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.35);color:white">🍳</span>
+        <span>Cocina Práctica</span>
+      </div>
+      <p>© 2026 Cocina Práctica. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+</body>
+</html>

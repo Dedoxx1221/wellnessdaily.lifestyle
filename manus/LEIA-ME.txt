@@ -1,0 +1,25 @@
+FUNIL COCINA PRÁCTICA — ARQUIVOS HTML
+
+01_FRONT_Cocina_Rapida_USD_19_90
+Preço: US$ 19,90
+Arquivo para hospedagem: index.html
+
+02_UPSELL_1_Freidora_de_Aire_USD_27
+Preço: US$ 27
+Arquivo para hospedagem: index.html
+
+03_PRODUTO_3_Viandas_USD_27
+Preço: US$ 27
+Arquivo para hospedagem: index.html
+
+04_DOWNSELL_Reposteria_Rentable_USD_19
+Preço: US$ 19
+Arquivo para hospedagem: index.html
+
+05_PAGINA_DE_OBRIGADO
+Sem preço
+Arquivo para hospedagem: index.html
+
+Observação:
+Os links definitivos de compra/aceite/recusa da Digistore24 ainda precisam ser inseridos
+nas páginas correspondentes quando os produtos e o funil estiverem configurados.
