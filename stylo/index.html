@@ -1,0 +1,486 @@
+<!DOCTYPE html><html lang="fr"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ==================== SEO GLOBAL ==================== -->
+<title>Stylo Maison App — Application bien-être : leçons vidéo &amp; recette personnalisée</title>
+<meta name="description" content="Stylo Maison App : l'application bien-être qui génère votre recette de boisson naturelle personnalisée et vous guide avec des leçons vidéo courtes. Accès à vie, paiement unique de $42, garantie 30 jours.">
+<meta name="keywords" content="stylo maison, stylo maison app, application bien-être, recette personnalisée, boisson naturelle, leçons vidéo bien-être, routine matinale">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://stylomaison.app/">
+<link rel="alternate" hreflang="fr" href="https://stylomaison.app/">
+<link rel="alternate" hreflang="x-default" href="https://stylomaison.app/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Stylo Maison App">
+<meta property="og:title" content="Stylo Maison App — Votre bien-être, simplifié par la technologie">
+<meta property="og:description" content="L'application qui génère votre recette de boisson naturelle personnalisée en quelques secondes. Leçons vidéo courtes, 3 bonus inclus, accès à vie.">
+<meta property="og:url" content="https://stylomaison.app/">
+<meta property="og:image" content="images/hero.png">
+<meta property="og:locale" content="fr_FR">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Stylo Maison App — Votre bien-être, simplifié">
+<meta name="twitter:description" content="Recette personnalisée en quelques secondes + leçons vidéo courtes. Accès à vie, $42, garantie 30 jours.">
+<meta name="twitter:image" content="images/hero.png">
+
+<!-- Données structurées : Produit -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Stylo Maison App",
+  "description": "Application bien-être : recette de boisson naturelle personnalisée générée en quelques secondes, leçons vidéo courtes et 3 bonus inclus. Accès à vie.",
+  "image": "https://stylomaison.app/imagens/hero.png",
+  "brand": { "@type": "Brand", "name": "Stylo Maison App" },
+  "offers": {
+    "@type": "Offer",
+    "url": "https://stylomaison.app/",
+    "priceCurrency": "USD",
+    "price": "42.00",
+    "availability": "https://schema.org/InStock",
+    "hasMerchantReturnPolicy": {
+      "@type": "MerchantReturnPolicy",
+      "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+      "merchantReturnDays": 30
+    }
+  }
+}
+</script>
+
+<!-- Données structurées : FAQ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Comment fonctionne Stylo Maison App ?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Vous renseignez quelques informations de base, l'application génère votre recette de boisson naturelle personnalisée en quelques secondes, puis vous suivez des leçons vidéo courtes pour intégrer la routine à votre quotidien." }
+    },
+    {
+      "@type": "Question",
+      "name": "L'accès est-il vraiment à vie ?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Oui. Un seul paiement de $42 USD, sans abonnement ni frais récurrents. Vous accédez à l'application depuis n'importe quel appareil, à vie." }
+    },
+    {
+      "@type": "Question",
+      "name": "Y a-t-il une garantie ?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Oui, vous bénéficiez d'une garantie satisfait ou remboursé de 30 jours. Si l'application ne vous convient pas, contactez le support pour un remboursement." }
+    },
+    {
+      "@type": "Question",
+      "name": "Sur quels appareils l'application fonctionne-t-elle ?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Stylo Maison App est une application web : elle fonctionne sur smartphone, tablette et ordinateur, sans installation. Il suffit d'un navigateur et de votre e-mail d'achat." }
+    },
+    {
+      "@type": "Question",
+      "name": "Quand est-ce que je reçois mon accès ?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Immédiatement après votre achat : vous recevez par e-mail votre lien d'accès à l'application." }
+    }
+  ]
+}
+</script>
+
+<link rel="icon" href="imagens/favicon.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=DM+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --ink:#0E1613; --ink-70:#3A4A42; --ink-50:#6A7A71; --ink-30:#A7B3AC;
+  --bg:#FAFCFB; --panel:#F1F6F3; --line:#E2EAE5;
+  --green:#12A66B; --green-deep:#0C7A4E; --green-dark:#0A3D28;
+  --glow:rgba(18,166,107,.12);
+  --mono:ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+img{max-width:100%;display:block;}
+a{color:inherit;}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px;}
+h1,h2,h3,.sg{font-family:'Space Grotesk',sans-serif;}
+.mono{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--green-deep);font-weight:600;}
+
+/* fundo tech: grade de pontos */
+.dots{position:relative;}
+.dots::before{content:"";position:absolute;inset:0;background-image:radial-gradient(circle,rgba(14,22,19,.06) 1px,transparent 1px);background-size:22px 22px;pointer-events:none;-webkit-mask-image:linear-gradient(to bottom,black 60%,transparent);mask-image:linear-gradient(to bottom,black 60%,transparent);}
+
+/* ===== Header ===== */
+header{position:sticky;top:0;background:rgba(250,252,251,.86);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);z-index:50;}
+.hd{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:13px 0;}
+.logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:18px;letter-spacing:-.02em;white-space:nowrap;}
+.logo em{font-style:normal;color:var(--green-deep);}
+.logo .tag{font-family:var(--mono);font-size:10px;font-weight:600;color:var(--ink-30);vertical-align:middle;margin-left:4px;}
+.hd-right{display:flex;align-items:center;gap:14px;min-width:0;}
+.hd-member{font-size:13px;font-weight:600;color:var(--ink-70);text-decoration:none;white-space:nowrap;}
+.hd-member:hover{color:var(--green-deep);}
+.hd-cta{background:var(--green);color:#fff;text-decoration:none;font-weight:700;font-size:13px;padding:9px 16px;border-radius:10px;transition:background .2s;white-space:nowrap;}
+.hd-cta:hover{background:var(--green-deep);}
+
+/* ===== Hero ===== */
+.hero{padding:56px 0 34px;position:relative;overflow:hidden;}
+.hero::before{content:"";position:absolute;top:-160px;left:50%;transform:translateX(-50%);width:760px;height:540px;background:radial-gradient(closest-side,var(--glow),transparent 70%);pointer-events:none;}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:center;position:relative;}
+.badge{display:inline-flex;align-items:center;gap:7px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 15px;font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.06em;color:var(--ink-70);margin-bottom:20px;}
+.badge .dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 3px var(--glow);animation:blink 2s infinite;}
+@keyframes blink{50%{opacity:.4}}
+.hero h1{font-size:clamp(30px,4.6vw,48px);font-weight:700;letter-spacing:-.03em;line-height:1.08;margin-bottom:16px;}
+.hero h1 em{font-style:normal;color:var(--green-deep);}
+.hero .sub{font-size:clamp(15px,1.8vw,17.5px);color:var(--ink-50);max-width:480px;margin-bottom:26px;}
+.cta{display:inline-block;background:var(--green);color:#fff;text-decoration:none;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16.5px;padding:16px 30px;border-radius:14px;box-shadow:0 10px 28px rgba(18,166,107,.28);transition:transform .15s,background .2s;text-align:center;}
+.cta:hover{background:var(--green-deep);transform:translateY(-2px);}
+.cta-sub{font-size:12.5px;color:var(--ink-50);margin-top:12px;}
+
+/* ---- Mockup de app (CSS puro) ---- */
+.mock-zone{position:relative;display:flex;justify-content:center;padding:10px 0;}
+.phone{width:280px;background:#0D1512;border-radius:36px;padding:12px;box-shadow:0 34px 80px rgba(10,61,40,.28),0 0 0 1px rgba(255,255,255,.06) inset;position:relative;z-index:2;}
+.phone .screen{background:linear-gradient(180deg,#F6FAF7,#EEF5F0);border-radius:26px;overflow:hidden;padding:16px 14px 18px;}
+.p-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;}
+.p-brand{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:13px;color:var(--ink);}
+.p-brand em{font-style:normal;color:var(--green-deep);}
+.p-dots{display:flex;gap:4px;}
+.p-dots i{width:5px;height:5px;border-radius:50%;background:var(--ink-30);}
+.p-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:13px;margin-bottom:11px;}
+.p-card .t{font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--green-deep);font-weight:700;margin-bottom:8px;}
+.p-row{display:flex;align-items:center;gap:8px;font-size:11.5px;color:var(--ink-70);padding:5px 0;}
+.p-row .b{width:14px;height:14px;border-radius:5px;background:var(--glow);display:grid;place-items:center;flex-shrink:0;}
+.p-row .b svg{width:9px;height:9px;stroke:var(--green-deep);stroke-width:3;fill:none;}
+.p-btn{background:var(--green);color:#fff;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:12px;text-align:center;border-radius:10px;padding:10px;margin-top:4px;}
+.p-prog{display:flex;align-items:center;gap:10px;}
+.p-bar{flex:1;height:7px;border-radius:99px;background:var(--panel);overflow:hidden;}
+.p-bar i{display:block;height:100%;width:43%;border-radius:99px;background:linear-gradient(90deg,var(--green),#35C98A);}
+.p-pct{font-family:var(--mono);font-size:10px;color:var(--green-deep);font-weight:700;}
+/* selos flutuantes */
+.chip{position:absolute;background:rgba(255,255,255,.9);backdrop-filter:blur(8px);border:1px solid var(--line);border-radius:12px;padding:9px 13px;font-size:11.5px;font-weight:600;color:var(--ink-70);box-shadow:0 12px 30px rgba(10,61,40,.12);display:flex;align-items:center;gap:7px;z-index:3;}
+.chip svg{width:14px;height:14px;stroke:var(--green-deep);stroke-width:2.5;fill:none;flex-shrink:0;}
+.chip.c1{top:8%;left:-4%;}
+.chip.c2{bottom:20%;right:-6%;}
+.chip.c3{bottom:2%;left:0%;}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+.chip.c1{animation:float 5s ease-in-out infinite;}
+.chip.c2{animation:float 6s ease-in-out infinite .8s;}
+.chip.c3{animation:float 5.5s ease-in-out infinite 1.6s;}
+
+/* ===== Stats strip ===== */
+.stats{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#fff;}
+.stats .in{display:grid;grid-template-columns:repeat(4,1fr);}
+.stat{padding:20px 10px;text-align:center;border-left:1px solid var(--line);}
+.stat:first-child{border-left:none;}
+.stat .n{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:21px;color:var(--green-dark);letter-spacing:-.02em;}
+.stat .l{font-family:var(--mono);font-size:10px;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-50);margin-top:3px;}
+
+/* ===== Sections ===== */
+section{padding:64px 0;}
+h2{font-size:clamp(24px,3.4vw,33px);font-weight:700;letter-spacing:-.02em;line-height:1.15;margin:10px 0 14px;}
+.lead{color:var(--ink-50);font-size:15.5px;max-width:560px;}
+
+/* Steps */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px;}
+.step{background:#fff;border:1px solid var(--line);border-radius:16px;padding:26px 22px;position:relative;overflow:hidden;}
+.step::after{content:"";position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,var(--green),transparent);opacity:0;transition:opacity .25s;}
+.step:hover::after{opacity:1;}
+.step .n{font-family:var(--mono);font-weight:700;font-size:11px;color:var(--green-deep);background:var(--glow);border-radius:8px;padding:5px 11px;display:inline-block;margin-bottom:14px;letter-spacing:.08em;}
+.step h3{font-size:17px;font-weight:600;margin-bottom:7px;}
+.step p{font-size:14px;color:var(--ink-50);}
+
+/* Features */
+.feats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px;}
+.feat{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px 22px;transition:border-color .2s,transform .2s,box-shadow .2s;}
+.feat:hover{border-color:var(--green);transform:translateY(-3px);box-shadow:0 14px 34px rgba(10,61,40,.08);}
+.feat .ic{width:40px;height:40px;border-radius:11px;background:var(--glow);display:grid;place-items:center;margin-bottom:14px;}
+.feat .ic svg{width:20px;height:20px;stroke:var(--green-deep);fill:none;stroke-width:2;}
+.feat h3{font-size:16px;font-weight:600;margin-bottom:6px;}
+.feat p{font-size:13.5px;color:var(--ink-50);}
+
+/* Pricing */
+.price-sec{background:var(--green-dark);color:#fff;border-radius:24px;padding:56px 26px;text-align:center;position:relative;overflow:hidden;}
+.price-sec::before{content:"";position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.07) 1px,transparent 1px);background-size:20px 20px;pointer-events:none;}
+.price-sec::after{content:"";position:absolute;top:-140px;left:50%;transform:translateX(-50%);width:520px;height:340px;background:radial-gradient(closest-side,rgba(18,166,107,.4),transparent 70%);pointer-events:none;}
+.price-sec>*{position:relative;z-index:1;}
+.price-sec .mono{color:#7FE0B4;}
+.price-sec h2{color:#fff;}
+.price-sec .lead{color:rgba(255,255,255,.65);margin:0 auto;}
+.price-card{background:#fff;color:var(--ink);border-radius:20px;max-width:420px;margin:34px auto 0;padding:32px 24px;text-align:center;box-shadow:0 24px 60px rgba(0,0,0,.25);}
+.price-card .val{font-family:'Space Grotesk',sans-serif;font-size:52px;font-weight:700;letter-spacing:-.03em;color:var(--green-dark);line-height:1;}
+.price-card .val small{font-size:20px;font-weight:600;}
+.price-card .once{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-50);margin:8px 0 20px;}
+.inc{text-align:left;margin:0 0 22px;font-size:14px;}
+.inc div{display:flex;gap:10px;padding:7px 0;border-bottom:1px dashed var(--line);}
+.inc div:last-child{border:none;}
+.inc svg{width:17px;height:17px;stroke:var(--green);fill:none;stroke-width:2.4;flex-shrink:0;margin-top:3px;}
+.g30{display:inline-flex;align-items:center;gap:8px;background:var(--glow);color:var(--green-dark);font-size:13px;font-weight:700;border-radius:999px;padding:8px 16px;margin-top:16px;}
+.g30 svg{width:16px;height:16px;stroke:var(--green-deep);fill:none;stroke-width:2.2;flex-shrink:0;}
+
+/* FAQ */
+.faq{max-width:680px;margin:36px auto 0;}
+.faq details{background:#fff;border:1px solid var(--line);border-radius:14px;padding:17px 19px;margin-bottom:10px;transition:border-color .2s;}
+.faq details[open]{border-color:var(--green);}
+.faq summary{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:15px;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;}
+.faq summary::-webkit-details-marker{display:none;}
+.faq summary::after{content:"+";font-family:var(--mono);font-size:18px;color:var(--green-deep);}
+.faq details[open] summary::after{content:"–";}
+.faq p{font-size:14px;color:var(--ink-50);margin-top:10px;}
+
+/* Footer */
+footer{background:#0B1410;color:rgba(255,255,255,.55);padding:48px 0 34px;font-size:12.5px;line-height:1.7;}
+.ft-links{display:flex;gap:16px 22px;flex-wrap:wrap;justify-content:center;margin-bottom:26px;}
+.ft-links a{color:rgba(255,255,255,.8);text-decoration:none;font-weight:600;font-size:13px;}
+.ft-links a:hover{color:#7FE0B4;}
+.ft-disc{max-width:820px;margin:0 auto 22px;text-align:center;}
+.ft-disc a{color:rgba(255,255,255,.75);word-break:break-word;}
+.ft-copy{text-align:center;color:rgba(255,255,255,.4);}
+
+/* ============ MOBILE ============ */
+@media (max-width:900px){
+  .hero-grid{grid-template-columns:1fr;gap:38px;}
+  .hero-copy{text-align:center;}
+  .hero .sub{margin-left:auto;margin-right:auto;}
+  .steps,.feats{grid-template-columns:1fr;}
+  .stats .in{grid-template-columns:repeat(2,1fr);}
+  .stat:nth-child(3){border-left:none;}
+  .stat:nth-child(n+3){border-top:1px solid var(--line);}
+  section{padding:48px 0;}
+}
+@media (max-width:520px){
+  .wrap{padding:0 18px;}
+  .hd{gap:8px;}
+  .logo{font-size:16px;}
+  .logo .tag{display:none;}
+  .hd-right{gap:10px;}
+  .hd-member{font-size:12px;}
+  .hd-cta{font-size:12px;padding:8px 12px;}
+  .hero{padding:40px 0 24px;}
+  .cta{display:block;width:100%;}
+  .chip.c1{left:2%;}
+  .chip.c2{right:2%;}
+  .chip.c3{left:4%;}
+  .phone{width:250px;}
+  .price-sec{padding:40px 16px;border-radius:20px;}
+  .price-card{padding:26px 18px;}
+  .faq details{padding:15px 16px;}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap hd">
+    <div class="logo">Stylo<em>Maison</em><span class="tag">APP</span></div>
+    <nav class="hd-right" aria-label="Navigation principale">
+      <a class="hd-member" href="acesso.html">Espace membre</a>
+      <a class="hd-cta" href="https://explodely.com/p/866576971">Obtenir l'accès</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- ===== HERO ===== -->
+  <section class="hero dots">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <div class="badge"><span class="dot"></span> APPLICATION WEB · SANS INSTALLATION</div>
+          <h1>Votre bien-être quotidien, <em>simplifié par la technologie</em></h1>
+          <p class="sub">Stylo Maison App génère votre recette de boisson naturelle personnalisée en quelques secondes et vous guide pas à pas avec des leçons vidéo courtes.</p>
+          <a class="cta" href="https://explodely.com/p/866576971">Obtenir mon accès — $42</a>
+          <div class="cta-sub">Paiement unique · Accès à vie · Garantie 30 jours</div>
+        </div>
+
+        <!-- Mockup do app em CSS puro -->
+        <div class="mock-zone" aria-hidden="true">
+          <div class="chip c1"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg> Recette générée en 28 s</div>
+          <div class="chip c2"><svg viewBox="0 0 24 24"><polygon points="10 8 16 12 10 16 10 8"></polygon><circle cx="12" cy="12" r="10"></circle></svg> 7 leçons vidéo</div>
+          <div class="chip c3"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg> Accès à vie</div>
+          <div class="phone">
+            <div class="screen">
+              <div class="p-top">
+                <div class="p-brand">Stylo<em>Maison</em></div>
+                <div class="p-dots"><i></i><i></i><i></i></div>
+              </div>
+              <div class="p-card">
+                <div class="t">Votre recette du jour</div>
+                <div class="p-row"><span class="b"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg></span> Vinaigre de cidre — 1 c. à soupe</div>
+                <div class="p-row"><span class="b"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg></span> Citron pressé — ½</div>
+                <div class="p-row"><span class="b"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg></span> Cannelle — 1 pincée</div>
+                <div class="p-btn">✨ Générer ma recette</div>
+              </div>
+              <div class="p-card">
+                <div class="t">Progression</div>
+                <div class="p-prog"><div class="p-bar"><i></i></div><span class="p-pct">3/7</span></div>
+              </div>
+              <div class="p-card" style="margin-bottom:0">
+                <div class="t">Prochaine leçon</div>
+                <div class="p-row" style="padding-bottom:0"><span class="b"><svg viewBox="0 0 24 24"><polygon points="10 8 16 12 10 16 10 8"></polygon></svg></span> Rituel matinal · 4 min</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== STATS ===== -->
+  <div class="stats">
+    <div class="wrap in">
+      <div class="stat"><div class="n">7</div><div class="l">Leçons vidéo</div></div>
+      <div class="stat"><div class="n">~30 s</div><div class="l">Recette générée</div></div>
+      <div class="stat"><div class="n">3</div><div class="l">Bonus inclus</div></div>
+      <div class="stat"><div class="n">∞</div><div class="l">Accès à vie</div></div>
+    </div>
+  </div>
+
+  <!-- ===== COMMENT ÇA MARCHE ===== -->
+  <section id="fonctionnement">
+    <div class="wrap">
+      <div class="mono">[ 01 — Fonctionnement ]</div>
+      <h2>Trois étapes. Quelques minutes par jour.</h2>
+      <p class="lead">Pas de régime compliqué, pas d'équipement : une routine simple, guidée par l'application.</p>
+      <div class="steps">
+        <div class="step">
+          <span class="n">ÉTAPE_01</span>
+          <h3>Renseignez vos informations</h3>
+          <p>Quelques données de base suffisent : l'application s'adapte à votre profil.</p>
+        </div>
+        <div class="step">
+          <span class="n">ÉTAPE_02</span>
+          <h3>Recevez votre recette personnalisée</h3>
+          <p>En quelques secondes, l'application génère votre boisson naturelle avec des ingrédients simples que vous avez chez vous.</p>
+        </div>
+        <div class="step">
+          <span class="n">ÉTAPE_03</span>
+          <h3>Suivez les leçons vidéo</h3>
+          <p>Des vidéos courtes et applicables dès le lendemain matin, pour installer la routine durablement.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FEATURES ===== -->
+  <section id="fonctionnalites" style="padding-top:0">
+    <div class="wrap">
+      <div class="mono">[ 02 — L'application ]</div>
+      <h2>Tout ce qu'il faut, rien de superflu.</h2>
+      <div class="feats">
+        <div class="feat">
+          <div class="ic"><svg viewBox="0 0 24 24"><polygon points="10 8 16 12 10 16 10 8"></polygon><circle cx="12" cy="12" r="10"></circle></svg></div>
+          <h3>7 leçons vidéo courtes</h3>
+          <p>Un parcours guidé, du premier jour au maintien des résultats.</p>
+        </div>
+        <div class="feat">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"></path></svg></div>
+          <h3>Recette générée en secondes</h3>
+          <p>Votre boisson naturelle personnalisée selon vos informations.</p>
+        </div>
+        <div class="feat">
+          <div class="ic"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"></rect><path d="M12 18h.01"></path></svg></div>
+          <h3>Multi-appareils</h3>
+          <p>Smartphone, tablette ou ordinateur : aucun téléchargement nécessaire.</p>
+        </div>
+        <div class="feat">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-6"></path><path d="M12 2v13M7 8l5-5 5 5"></path></svg></div>
+          <h3>3 bonus inclus</h3>
+          <p>Guides pratiques dédiés à la peau, à la silhouette et aux routines.</p>
+        </div>
+        <div class="feat">
+          <div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg></div>
+          <h3>Accès à vie</h3>
+          <p>Un seul paiement. Pas d'abonnement, pas de frais cachés.</p>
+        </div>
+        <div class="feat">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></div>
+          <h3>Support dédié</h3>
+          <p>Une équipe disponible par e-mail pour toute question sur votre accès.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PRICING ===== -->
+  <section id="acces" style="padding-top:0">
+    <div class="wrap">
+      <div class="price-sec">
+        <div class="mono">[ 03 — Accès complet ]</div>
+        <h2>Un paiement. Un accès à vie.</h2>
+        <p class="lead">Rejoignez Stylo Maison App aujourd'hui et gardez votre accès pour toujours.</p>
+        <div class="price-card">
+          <div class="val"><small>$</small>42 <small>USD</small></div>
+          <div class="once">Paiement unique — sans abonnement</div>
+          <div class="inc">
+            <div><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg><span>Application complète : recette personnalisée illimitée</span></div>
+            <div><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg><span>7 leçons vidéo guidées</span></div>
+            <div><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg><span>3 bonus : peau, silhouette, routines</span></div>
+            <div><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg><span>Accès à vie, sur tous vos appareils</span></div>
+            <div><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg><span>Accès immédiat par e-mail après l'achat</span></div>
+          </div>
+          <a class="cta" href="https://explodely.com/p/866576971" style="display:block">Obtenir mon accès maintenant</a>
+          <div class="g30"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="M9 12l2 2 4-4"></path></svg> Garantie satisfait ou remboursé — 30 jours</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section id="faq" style="padding-top:0">
+    <div class="wrap">
+      <div class="mono" style="text-align:center;display:block">[ 04 — FAQ ]</div>
+      <h2 style="text-align:center">Questions fréquentes</h2>
+      <div class="faq">
+        <details>
+          <summary>Comment fonctionne Stylo Maison App ?</summary>
+          <p>Vous renseignez quelques informations de base, l'application génère votre recette de boisson naturelle personnalisée en quelques secondes, puis vous suivez des leçons vidéo courtes pour intégrer la routine à votre quotidien.</p>
+        </details>
+        <details>
+          <summary>L'accès est-il vraiment à vie ?</summary>
+          <p>Oui. Un seul paiement de $42 USD, sans abonnement ni frais récurrents. Vous accédez à l'application depuis n'importe quel appareil, à vie.</p>
+        </details>
+        <details>
+          <summary>Y a-t-il une garantie ?</summary>
+          <p>Oui, vous bénéficiez d'une garantie satisfait ou remboursé de 30 jours. Si l'application ne vous convient pas, contactez le support pour un remboursement.</p>
+        </details>
+        <details>
+          <summary>Sur quels appareils l'application fonctionne-t-elle ?</summary>
+          <p>Stylo Maison App est une application web : elle fonctionne sur smartphone, tablette et ordinateur, sans installation. Il suffit d'un navigateur et de votre e-mail d'achat.</p>
+        </details>
+        <details>
+          <summary>Quand est-ce que je reçois mon accès ?</summary>
+          <p>Immédiatement après votre achat : vous recevez par e-mail votre lien d'accès à l'application.</p>
+        </details>
+      </div>
+      <div style="text-align:center;margin-top:34px">
+        <a class="cta" href="https://explodely.com/p/866576971" style="display:inline-block;max-width:420px;width:100%">Obtenir mon accès — $42</a>
+        <div class="cta-sub">Paiement unique · Garantie 30 jours</div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ===== FOOTER / COMPLIANCE ===== -->
+<footer>
+  <div class="wrap">
+    <nav class="ft-links" aria-label="Liens légaux">
+      <a href="remboursement.html">Politique de remboursement</a>
+      <a href="ftc.html">Conformité FTC</a>
+      <a href="confidentialite.html">Confidentialité</a>
+      <a href="cgv.html">CGV</a>
+      <a href="acesso.html">Espace membre</a>
+    </nav>
+    <div class="ft-disc">
+      Explodely.com est la passerelle de confiance pour Stylo Maison App. Explodely est une marque déposée d'Explodely LLC, une société américaine située au 1317 Edgewater Drive Suite #4648, Orlando FL, 32804, États-Unis, et utilisée avec autorisation. Le rôle d'Explodely en tant que prestataire de passerelle ne constitue ni une approbation, ni une validation, ni un examen de ce produit, ni d'une quelconque déclaration, affirmation ou opinion utilisée dans la promotion de ce produit. Si vous n'êtes pas entièrement satisfait de votre achat ou si vous avez besoin d'aide, contactez Explodely ici : <a href="http://expldely.com/" target="_blank" rel="noopener">http://expldely.com/</a> — ou via le support de facturation : <a href="https://help.explodely.com/support/tickets/new" target="_blank" rel="noopener">https://help.explodely.com/support/tickets/new</a>.
+      <br><br>
+      <strong>Support produit :</strong> pour toute question, contactez Joa Digital Business à <a href="mailto:stylomaison@joa.business">stylomaison@joa.business</a>.
+      <br><br>
+      Contenu éducatif de bien-être uniquement. Ces informations ne visent pas à diagnostiquer, traiter, guérir ou prévenir une quelconque maladie et ne remplacent pas un avis médical. Les résultats varient d'une personne à l'autre. Consultez votre médecin avant de modifier votre alimentation, en particulier si vous êtes enceinte, allaitez, prenez des médicaments ou présentez une condition médicale. Aucune affiliation avec Meta, Google ou une quelconque plateforme tierce. Toutes les marques appartiennent à leurs propriétaires respectifs.
+    </div>
+    <div class="ft-copy">© 2026 Stylo Maison App · <a href="https://joa.business/" target="_blank" rel="noopener" style="color:inherit">Joa Digital Business</a> — Tous droits réservés.</div>
+  </div>
+</footer>
+
+
+
+</body></html>
