@@ -1,0 +1,325 @@
+<!DOCTYPE html><html lang="pt-BR"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teste — TikTok Pixel: Evento de Compra</title>
+<style>
+  :root {
+    --bg: #0e0e10;
+    --panel: #17171a;
+    --border: #2a2a2e;
+    --text: #f2f2f0;
+    --muted: #9a9a9e;
+    --accent: #00f2ea;
+    --accent-2: #ff0050;
+    --ok: #38d39f;
+    --err: #ff5c5c;
+    --mono: 'SF Mono', 'Consolas', monospace;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+  }
+  .wrap { width: 100%; max-width: 560px; }
+  h1 {
+    font-size: 22px;
+    font-weight: 600;
+    margin: 0 0 6px;
+  }
+  .subtitle {
+    color: var(--muted);
+    font-size: 14px;
+    margin: 0 0 28px;
+    line-height: 1.5;
+  }
+  .card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 20px;
+  }
+  .card h2 {
+    font-size: 13px;
+    color: var(--muted);
+    margin: 0 0 16px;
+    font-weight: 500;
+  }
+  label {
+    display: block;
+    font-size: 13px;
+    color: var(--text);
+    margin-bottom: 6px;
+    margin-top: 14px;
+  }
+  label:first-of-type { margin-top: 0; }
+  input, select {
+    width: 100%;
+    background: #0e0e10;
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 10px 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: var(--mono);
+  }
+  input:focus, select:focus {
+    outline: none;
+    border-color: var(--accent);
+  }
+  button {
+    width: 100%;
+    margin-top: 20px;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    background: var(--accent-2);
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.15s ease;
+  }
+  button:hover { opacity: 0.88; }
+  button:disabled { opacity: 0.4; cursor: not-allowed; }
+  .log {
+    background: #0a0a0b;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px;
+    font-family: var(--mono);
+    font-size: 12.5px;
+    line-height: 1.6;
+    max-height: 280px;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+  .log .line { margin-bottom: 6px; }
+  .log .ok { color: var(--ok); }
+  .log .err { color: var(--err); }
+  .log .info { color: var(--muted); }
+  .status-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--muted);
+  }
+  .dot.loaded { background: var(--ok); }
+  .dot.error { background: var(--err); }
+  .hint {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 8px;
+    line-height: 1.5;
+  }
+  code {
+    background: #0a0a0b;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: var(--mono);
+    font-size: 12px;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Teste de Evento de Compra — TikTok Pixel</h1>
+  <p class="subtitle">Página isolada para validar disparo do evento <code>CompletePayment</code> (equivalente à compra no TikTok Pixel). Use o TikTok Events Manager → Test Events para conferir o recebimento em tempo real.</p>
+
+  <div class="card">
+    <h2>CONFIGURAÇÃO DO PIXEL</h2>
+    <label for="pixelId">Pixel ID</label>
+    <input type="text" id="pixelId" placeholder="SEU_PIXEL_ID_AQUI" value="SEU_PIXEL_ID_AQUI">
+    <div class="status-row" style="margin-top:12px;">
+      <div class="dot" id="statusDot"></div>
+      <span id="statusText">Pixel não carregado</span>
+    </div>
+    <button id="loadBtn">Carregar Pixel</button>
+    <p class="hint">Pegue o Pixel ID em TikTok Ads Manager → Ativos → Eventos → seu pixel.</p>
+  </div>
+
+  <div class="card">
+    <h2>ADVANCED MATCHING (recomendado pelo TikTok)</h2>
+    <label for="email">E-mail do cliente</label>
+    <input type="email" id="email" placeholder="cliente@exemplo.com" value="teste@exemplo.com">
+
+    <label for="phone">Telefone (formato internacional E.164)</label>
+    <input type="text" id="phone" placeholder="+5511999999999" value="+5511999999999">
+    <p class="hint">O TikTok recomenda esses dados para aumentar a taxa de correspondência (match rate) dos eventos com contas reais. Eles são convertidos em hash SHA-256 automaticamente antes de sair do navegador — nunca em texto puro.</p>
+  </div>
+
+  <div class="card">
+    <h2>DADOS DO EVENTO DE COMPRA</h2>
+    <label for="contentId">ID do produto (content_id)</label>
+    <input type="text" id="contentId" value="SKU-001">
+
+    <label for="contentName">Nome do produto</label>
+    <input type="text" id="contentName" value="Produto de Teste">
+
+    <label for="value">Valor</label>
+    <input type="number" id="value" value="99.90" step="0.01">
+
+    <label for="currency">Moeda</label>
+    <select id="currency">
+      <option value="BRL" selected="">BRL</option>
+      <option value="USD">USD</option>
+      <option value="EUR">EUR</option>
+    </select>
+
+    <label for="quantity">Quantidade</label>
+    <input type="number" id="quantity" value="1" min="1">
+
+    <button id="fireBtn" disabled="">Disparar CompletePayment</button>
+    <p class="hint">O botão fica ativo depois que o pixel for carregado com sucesso.</p>
+  </div>
+
+  <div class="card">
+    <h2>LOG</h2>
+    <div class="log" id="log"><div class="line info">Aguardando ações...</div></div>
+  </div>
+</div>
+
+<script>
+  const logEl = document.getElementById('log');
+  const statusDot = document.getElementById('statusDot');
+  const statusText = document.getElementById('statusText');
+  const loadBtn = document.getElementById('loadBtn');
+  const fireBtn = document.getElementById('fireBtn');
+
+  function log(msg, type = 'info') {
+    const line = document.createElement('div');
+    line.className = 'line ' + type;
+    const time = new Date().toLocaleTimeString('pt-BR');
+    line.textContent = `[${time}] ${msg}`;
+    logEl.appendChild(line);
+    logEl.scrollTop = logEl.scrollHeight;
+  }
+
+  function setStatus(state, text) {
+    statusDot.className = 'dot ' + state;
+    statusText.textContent = text;
+  }
+
+  loadBtn.addEventListener('click', () => {
+    const pixelId = document.getElementById('pixelId').value.trim();
+    if (!pixelId) {
+      log('Informe um Pixel ID antes de carregar.', 'err');
+      return;
+    }
+
+    log('Carregando TikTok Pixel base code com ID: ' + pixelId);
+
+    // TikTok Pixel base code (oficial)
+    (function (w, d, t) {
+      w.TiktokAnalyticsObject = t;
+      var ttq = w[t] = w[t] || [];
+      ttq.methods = ["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"];
+      ttq.setAndDefer = function (t, e) {
+        t[e] = function () {
+          t.push([e].concat(Array.prototype.slice.call(arguments, 0)));
+        };
+      };
+      for (var i = 0; i < ttq.methods.length; i++) ttq.setAndDefer(ttq, ttq.methods[i]);
+      ttq.instance = function (t) {
+        var e = ttq._i[t] || [];
+        for (var n = 0; n < ttq.methods.length; n++) ttq.setAndDefer(e, ttq.methods[n]);
+        return e;
+      };
+      ttq.load = function (e, n) {
+        var r = "https://analytics.tiktok.com/i18n/pixel/events.js";
+        var o = n && n.partner;
+        ttq._i = ttq._i || {};
+        ttq._i[e] = [];
+        ttq._i[e]._u = r;
+        ttq._t = ttq._t || {};
+        ttq._t[e] = +new Date();
+        ttq._o = ttq._o || {};
+        ttq._o[e] = n || {};
+        var script = d.createElement("script");
+        script.type = "text/javascript";
+        script.async = true;
+        script.src = r + "?sdkid=" + e + "&lib=" + t;
+        script.onload = function () {
+          log('Script do TikTok Pixel carregado com sucesso.', 'ok');
+          setStatus('loaded', 'Pixel carregado — ' + pixelId);
+          fireBtn.disabled = false;
+        };
+        script.onerror = function () {
+          log('Falha ao carregar o script do TikTok Pixel. Verifique conexão ou bloqueadores de anúncio.', 'err');
+          setStatus('error', 'Erro ao carregar');
+        };
+        var firstScript = d.getElementsByTagName("script")[0];
+        firstScript.parentNode.insertBefore(script, firstScript);
+      };
+
+      ttq.load(pixelId);
+      ttq.page();
+      log('Chamada ttq.page() disparada (PageView).', 'ok');
+    })(window, document, 'ttq');
+  });
+
+  fireBtn.addEventListener('click', () => {
+    if (typeof ttq === 'undefined') {
+      log('Pixel ainda não está pronto.', 'err');
+      return;
+    }
+
+    const contentId = document.getElementById('contentId').value.trim();
+    const contentName = document.getElementById('contentName').value.trim();
+    const value = parseFloat(document.getElementById('value').value);
+    const currency = document.getElementById('currency').value;
+    const quantity = parseInt(document.getElementById('quantity').value, 10);
+    const email = document.getElementById('email').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+
+    // Advanced Matching: envia email/telefone para o TikTok fazer o hash
+    // SHA-256 automaticamente antes de sair do navegador.
+    if (email || phone) {
+      const identifyPayload = {};
+      if (email) identifyPayload.email = email;
+      if (phone) identifyPayload.phone_number = phone;
+      ttq.identify(identifyPayload);
+      log('ttq.identify() chamado com dados de Advanced Matching (hash automático).', 'ok');
+    } else {
+      log('Nenhum email/telefone informado — evento seguirá sem Advanced Matching.', 'info');
+    }
+
+    const payload = {
+      contents: [
+        {
+          content_id: contentId,
+          content_name: contentName,
+          quantity: quantity,
+          price: value
+        }
+      ],
+      value: value,
+      currency: currency
+    };
+
+    try {
+      ttq.track('CompletePayment', payload);
+      log('Evento CompletePayment disparado com payload:', 'ok');
+      log(JSON.stringify(payload, null, 2), 'ok');
+    } catch (e) {
+      log('Erro ao disparar evento: ' + e.message, 'err');
+    }
+  });
+</script>
+
+
+</body></html>
