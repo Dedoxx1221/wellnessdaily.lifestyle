@@ -241,30 +241,26 @@ a{text-decoration-thickness:1px!important;text-underline-offset:.1em}:where(.wp-
  <vturb-smartplayer id="vid-6aa5fa2ceae1c17f4aff365f" style="display: block; margin: 0 auto; width: 100%; max-width: 400px;"><div class="vturb-player-placeholder" style="position: relative; width: 100%; padding: 178.21782178217822% 0 0; z-index: 0; background-color: black;"></div></vturb-smartplayer> <script type="text/javascript"> var s=document.createElement("script"); s.src="https://scripts.converteai.net/f93eec12-25d1-4295-afcb-b6ad233b41e1/players/6aa5fa2ceae1c17f4aff365f/v4/player.js", s.async=!0,document.head.appendChild(s); </script>
       </div>
     </div>
-
-  <!-- HOTMART WIDGET COM DELAY 2min40s -->
-<div class="hotmart-wrapper" id="hotmart-delayed-wrapper" style="display:none;">
-  <!-- HOTMART - Sales Funnel Widget -->
-  <div id="hotmart-sales-funnel"></div>
-</div>
+<!-- HOTMART - Sales Funnel Widget -->
+<div id="hotmart-sales-funnel" style="display:none;"></div>
 
 <script>
-  setTimeout(function() {
+(function () {
+  const DELAY = 160000; // 2min40s
+  let started = false;
 
-    var wrapper = document.getElementById('hotmart-delayed-wrapper');
+  function showHotmart() {
+    const container = document.getElementById('hotmart-sales-funnel');
 
-    if (wrapper) {
-      wrapper.style.display = 'block';
-    }
+    if (!container) return;
 
-    // Carrega o script oficial da Hotmart
-    var script = document.createElement('script');
+    container.style.display = 'block';
 
+    // Carrega o widget somente quando chegar aos 2min40s
+    const script = document.createElement('script');
     script.src = 'https://checkout.hotmart.com/lib/hotmart-checkout-elements.js';
-    script.async = true;
-    script.defer = true;
 
-    script.onload = function() {
+    script.onload = function () {
       if (typeof checkoutElements !== 'undefined') {
         checkoutElements
           .init('salesFunnel')
@@ -273,9 +269,48 @@ a{text-decoration-thickness:1px!important;text-underline-offset:.1em}:where(.wp-
     };
 
     document.body.appendChild(script);
+  }
 
-  }, 160000); // 2 minutos e 40 segundos
+  function startTimer() {
+    if (started) return;
+    started = true;
+
+    setTimeout(showHotmart, DELAY);
+  }
+
+  /*
+   * VTurb envia eventos para a página.
+   * Detecta o início da reprodução do vídeo.
+   */
+  window.addEventListener('message', function (event) {
+    try {
+      const data = typeof event.data === 'string'
+        ? JSON.parse(event.data)
+        : event.data;
+
+      if (!data) return;
+
+      const eventName =
+        data.event ||
+        data.type ||
+        data.name ||
+        data.action;
+
+      if (
+        eventName === 'play' ||
+        eventName === 'video_play' ||
+        eventName === 'smartplayer-play' ||
+        eventName === 'smartplayer-play-event'
+      ) {
+        startTimer();
+      }
+
+    } catch (e) {}
+  });
+
+})();
 </script>
+<!-- HOTMART - Sales Funnel Widget -->
 
 				</div>
 					</div>
