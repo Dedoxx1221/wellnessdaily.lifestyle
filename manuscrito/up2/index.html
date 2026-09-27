@@ -231,7 +231,9 @@ a{text-decoration-thickness:1px!important;text-underline-offset:.1em}:where(.wp-
     <vturb-smartplayer id="vid-6aa5fa8e9edc01cca845e875" style="display: block; margin: 0 auto; width: 100%; "><div class="vturb-player-placeholder" style="position: relative; width: 100%; padding: 56.25% 0 0; z-index: 0; background-color: black;"></div></vturb-smartplayer> <script type="text/javascript"> var s=document.createElement("script"); s.src="https://scripts.converteai.net/f93eec12-25d1-4295-afcb-b6ad233b41e1/players/6aa5fa8e9edc01cca845e875/v4/player.js", s.async=!0,document.head.appendChild(s); </script>
       </div>
 		
-    <!-- HOTMART - Sales Funnel Widget -->
+```html
+<!-- HOTMART - Sales Funnel Widget -->
+<!--- sales funnel container --->
 <div id="hotmart-sales-funnel" style="display:none;"></div>
 
 <script>
@@ -246,11 +248,15 @@ a{text-decoration-thickness:1px!important;text-underline-offset:.1em}:where(.wp-
 
     container.style.display = 'block';
 
+    // Carrega o script oficial da Hotmart
     const script = document.createElement('script');
     script.src = 'https://checkout.hotmart.com/lib/hotmart-checkout-elements.js';
 
     script.onload = function () {
-      if (typeof checkoutElements !== 'undefined') {
+      if (
+        typeof checkoutElements !== 'undefined' &&
+        typeof checkoutElements.init === 'function'
+      ) {
         checkoutElements
           .init('salesFunnel')
           .mount('#hotmart-sales-funnel');
@@ -262,11 +268,14 @@ a{text-decoration-thickness:1px!important;text-underline-offset:.1em}:where(.wp-
 
   function startTimer() {
     if (started) return;
+
     started = true;
 
+    // Aguarda 2min05s após o play do vídeo
     setTimeout(showHotmart, DELAY);
   }
 
+  // Detecta eventos enviados pelo player
   window.addEventListener('message', function (event) {
     try {
       const data = typeof event.data === 'string'
@@ -290,12 +299,16 @@ a{text-decoration-thickness:1px!important;text-underline-offset:.1em}:where(.wp-
         startTimer();
       }
 
-    } catch (e) {}
+    } catch (e) {
+      // Ignora mensagens que não sejam JSON válido
+    }
   });
 
 })();
 </script>
 <!-- HOTMART - Sales Funnel Widget -->
+```
+
      
 
     </div><!-- /inner -->
