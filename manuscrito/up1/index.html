@@ -276,39 +276,6 @@ a{text-decoration-thickness:1px!important;text-underline-offset:.1em}:where(.wp-
         })();
       }, 160000); // 2 min 40 seg
     </script>
-
-  /*
-   * VTurb envia eventos para a página.
-   * Detecta o início da reprodução do vídeo.
-   */
-  window.addEventListener('message', function (event) {
-    try {
-      const data = typeof event.data === 'string'
-        ? JSON.parse(event.data)
-        : event.data;
-
-      if (!data) return;
-
-      const eventName =
-        data.event ||
-        data.type ||
-        data.name ||
-        data.action;
-
-      if (
-        eventName === 'play' ||
-        eventName === 'video_play' ||
-        eventName === 'smartplayer-play' ||
-        eventName === 'smartplayer-play-event'
-      ) {
-        startTimer();
-      }
-
-    } catch (e) {}
-  });
-
-})();
-</script>
 <!-- HOTMART - Sales Funnel Widget -->
 
 				</div>
