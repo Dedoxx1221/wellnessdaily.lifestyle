@@ -716,6 +716,21 @@
     <script data-optimized="1" type="litespeed/javascript" data-src="https://truquedobicarbonato.online/wp-content/litespeed/js/a71d14ac3f29f4124b18e6b9c512ac9a.js?ver=e5296"></script>
 
 
+<script>
+(function () {
+  var destino = "https://wellnessdaily.lifestyle/pvskin/backbica";
+  document.addEventListener("click", function (event) {
+    var botao = event.target && event.target.closest ? event.target.closest("#brr-go") : null;
+    if (!botao) return;
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    var parametros = window.location.search;
+    window.location.href = destino + (parametros ? (destino.indexOf("?") === -1 ? "?" : "&") + parametros.slice(1) : "");
+  }, true);
+})();
+</script>
+
+
 
 
 </body>
