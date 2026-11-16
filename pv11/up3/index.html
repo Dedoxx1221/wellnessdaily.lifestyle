@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Money Club — Lifetime Access</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#050303;--white:#f7f6f7;--muted:#a5a7b5;--orange:#ff8616;
+  --red:#f3262d;--pink:#ff6269;--yellow:#ffc400;--green:#00d99a;
+}
+*{box-sizing:border-box}
+html{min-height:100%;background:var(--bg)}
+body{
+  margin:0;min-height:100vh;color:var(--white);font-family:"Poppins",sans-serif;
+  background:radial-gradient(ellipse at 50% 5%,rgba(75,7,7,.24),transparent 36%),#050303;
+  border-top:4px solid #292929;
+}
+main{width:min(100% - 40px,354px);margin:25px auto 64px}
+.warning{
+  min-height:66px;padding:13px 13px;border-radius:13px;background:#c91e22;
+  display:flex;align-items:center;justify-content:center;gap:12px;text-align:center;
+  color:#fff;font-size:13px;font-weight:800;line-height:1.55;
+}
+.warning svg{width:18px;height:18px;flex:0 0 18px}
+.activated{margin:24px 0 8px;color:var(--muted);font-size:12px}
+.features{list-style:none;padding:0;margin:0}
+.features li,.losses li{display:flex;align-items:center;gap:9px;margin:7px 0;font-size:12px;color:#e4e3e7}
+.features svg{color:var(--green);width:15px;height:15px;flex:none}
+.intro{margin:25px 0 12px;color:var(--orange);font-size:15px;font-weight:800;line-height:1.45}
+h1{font-size:18px;line-height:1.35;letter-spacing:-.45px;margin:0 0 23px;font-weight:800}
+.panel{border:1px solid #252938;border-radius:13px;background:rgba(15,16,25,.8);padding:15px 14px;margin-bottom:24px}
+.panel h2{font-size:13px;color:var(--yellow);margin:0 0 10px;font-weight:800}
+.panel p{font-size:12px;line-height:1.7;color:var(--muted);margin:0 0 7px}
+.panel p:last-child{margin-bottom:0}
+.panel strong{color:#fff;font-weight:800}
+.section-title{color:var(--pink);font-size:14px;font-weight:800;margin:0 0 10px}
+.losses{list-style:none;padding:0;margin:0 0 24px}
+.losses li{font-size:12px;margin:7px 0}
+.losses svg{width:15px;height:15px;flex:none;color:#ff3c43}
+.imagine{border:1px solid #7d1c1b;background:rgba(43,9,9,.48);border-radius:13px;padding:15px 14px;margin:0 0 24px}
+.imagine h2{font-size:13px;margin:0 0 12px;font-weight:800}
+.imagine p{font-size:12px;color:#dedce0;line-height:1.65;margin:0 0 8px}
+.imagine .emphasis{font-size:15px;font-weight:800;color:#ff6269;margin:4px 0 0}
+.solution{text-align:center}
+.crown{
+  width:60px;height:60px;margin:0 auto 10px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,#ffd000,#ff790d);color:#fff;
+}
+.crown svg{width:31px;height:31px}
+.solution h2{font-size:18px;font-weight:800;margin:0 0 12px}
+.solution p{font-size:12px;line-height:1.65;color:var(--muted);margin:0 auto 12px}
+.solution p strong{color:var(--yellow);font-weight:800}
+.urgent{font-size:12px!important;color:var(--orange)!important;font-weight:800;line-height:1.5!important;margin:0 auto 24px!important}
+.offer{
+  border:1px solid #66500b;border-radius:19px;padding:18px 18px 17px;
+  background:linear-gradient(125deg,#111827 0%,#151d2d 100%);
+  box-shadow:inset 0 0 30px rgba(255,255,255,.025);text-align:center;
+}
+.offer .lockline{font-size:12px;color:var(--muted);margin:0 0 5px}
+.price{display:flex;align-items:baseline;justify-content:center;gap:4px;color:#ffb000;line-height:1;margin:0 0 18px}
+.price .currency{font-size:22px;font-weight:800}
+.price .amount{font-size:46px;font-weight:900;letter-spacing:-1.5px}
+.cta{
+  width:100%;min-height:48px;border:0;border-radius:13px;cursor:pointer;
+  background:linear-gradient(100deg,#ffc400,#ff7912);color:#090909;
+  font-family:inherit;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;gap:9px;
+}
+.cta svg{width:15px;height:15px}
+#hotmart-sales-funnel{width:100%;margin:0 auto}
+.guarantee{display:flex;align-items:flex-start;gap:7px;text-align:left;color:#a9adbb;font-size:10px;line-height:1.45;margin:12px 0 0}
+.guarantee svg{width:10px;height:10px;color:var(--green);flex:none;margin-top:2px}
+.decline{display:block;text-align:center;margin:20px 0 24px;color:#626775;font-size:10px;text-decoration:underline}
+.secure{display:flex;justify-content:center;align-items:center;gap:7px;color:#555b68;font-size:9px}
+.secure svg{width:12px;height:12px}
+@media(min-width:700px){
+  main{margin-top:25px;margin-bottom:68px}
+}
+</style>
+</head>
+<body>
+<main>
+  <div class="warning">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 2.2 18a2 2 0 0 0 1.7 3h16.2a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+    <span>WARNING: Your Money Club access expires<br>in 6 months!</span>
+  </div>
+
+  <p class="activated">You just activated:</p>
+  <ul class="features">
+    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="m8 12 2.5 2.5L16 9"/></svg>Your premium plan</li>
+    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="m8 12 2.5 2.5L16 9"/></svg>AI Multiplier</li>
+    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="m8 12 2.5 2.5L16 9"/></svg>Pro Mode</li>
+  </ul>
+
+  <p class="intro">But there's something crucial you need to<br>know...</p>
+  <h1>Your access expires in exactly 6<br>months.</h1>
+
+  <section class="panel">
+    <h2>Why?</h2>
+    <p>Money Club operates through strategic partnerships with financial institutions and market data providers.</p>
+    <p>These agreements renew every six months and, for contractual reasons, <strong>we cannot guarantee access beyond 6 months.</strong></p>
+  </section>
+
+  <h2 class="section-title">What happens in 6 months?</h2>
+  <ul class="losses">
+    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="m9 9 6 6m0-6-6 6"/></svg>Your account will be deactivated</li>
+    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="m9 9 6 6m0-6-6 6"/></svg>You'll lose access to the AI</li>
+    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="m9 9 6 6m0-6-6 6"/></svg>Your earnings stop growing</li>
+  </ul>
+
+  <section class="imagine">
+    <h2>Imagine this:</h2>
+    <p>You spent 6 months building consistent results...</p>
+    <p>Your AI is running perfectly...</p>
+    <p class="emphasis">And suddenly: access terminated.</p>
+  </section>
+
+  <section class="solution">
+    <div class="crown">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m2 8 5 4 5-8 5 8 5-4-2 12H4L2 8Z"/><path d="M4 21h16"/></svg>
+    </div>
+    <h2>The Solution</h2>
+    <p>As a founding member, you have an exclusive opportunity<br>to activate <strong>lifetime access</strong> right now.</p>
+    <p class="urgent">To activate it, just tap the button below. Available only<br>NOW, on this page.</p>
+  </section>
+
+  <section class="offer">
+    <p class="lockline">Lock in lifetime access with a one-time payment:</p>
+    <div class="price"><span class="currency">US</span><span class="amount">$47</span></div>
+    <!-- HOTMART - Sales Funnel Widget -->
+    <div id="hotmart-sales-funnel"></div>
+    <script src="https://checkout.hotmart.com/lib/hotmart-checkout-elements.js"></script>
+    <script>
+      checkoutElements.init('salesFunnel').mount('#hotmart-sales-funnel');
+    </script>
+    <!-- HOTMART - Sales Funnel Widget -->
+    <p class="guarantee"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 5v6c0 5 3.5 9 8 11 4.5-2 8-6 8-11V5l-8-3Z"/></svg>Unconditional 7-day guarantee. If you don't want it, we refund 100%.</p>
+  </section>
+
+  <div class="secure">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+    Secure payment · SSL encrypted
+  </div>
+</main>
+</body>
+</html>

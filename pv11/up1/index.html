@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080d19">
+  <title>Money Club | Activate Premium</title>
+  <meta name="robots" content="noindex, nofollow">
+  <style>
+    :root {
+      --bg-top: #070b16;
+      --bg-mid: #101827;
+      --bg-bottom: #030509;
+      --white: #f7f8fc;
+      --muted: #9aa8bd;
+      --gold: #ffb900;
+      --red: #df171d;
+    }
+    * { box-sizing: border-box; }
+    html { min-height: 100%; background: var(--bg-bottom); }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--white);
+      background: linear-gradient(180deg, var(--bg-top) 0%, #0d1524 58%, var(--bg-bottom) 100%);
+      font-family: Poppins, Arial, Helvetica, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    .alert {
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 14px 18px;
+      background: linear-gradient(90deg, #bd171b 0%, #e21d22 50%, #bd171b 100%);
+      border-top: 1px solid rgba(255,255,255,.18);
+      border-bottom: 1px solid rgba(255,255,255,.12);
+      box-shadow: 0 5px 18px rgba(190, 20, 25, .22);
+      text-align: center;
+      font-size: 17px;
+      font-weight: 800;
+      line-height: 1.3;
+    }
+    .alert-icon {
+      width: 25px;
+      height: 25px;
+      flex: 0 0 25px;
+      display: inline-flex;
+    }
+    .wrap {
+      width: min(100% - 32px, 660px);
+      margin: 25px auto 0;
+    }
+    .step-labels {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      margin: 0 0 10px;
+      color: #8998ae;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: .04em;
+    }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      min-height: 103px;
+      overflow: hidden;
+      border-radius: 17px;
+    }
+    .step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 8px;
+      text-align: center;
+      font-size: 16px;
+      font-weight: 800;
+      line-height: 1.23;
+    }
+    .step.done {
+      color: #fff;
+      background: linear-gradient(110deg, #08b981, #19c96b);
+    }
+    .step.current {
+      color: #fff;
+      background: linear-gradient(110deg, #f23c40, #e51f24);
+    }
+    .step.pending {
+      color: #9ca9bc;
+      background: #202a3a;
+    }
+    .tick {
+      margin-top: 3px;
+      font-size: 22px;
+      line-height: 1;
+    }
+    .intro {
+      margin: 34px auto 40px;
+      text-align: center;
+    }
+    h1 {
+      max-width: 650px;
+      margin: 0 auto 17px;
+      color: #f5f6fa;
+      font-size: clamp(29px, 5vw, 37px);
+      font-weight: 850;
+      letter-spacing: -.035em;
+      line-height: 1.13;
+    }
+    .intro p {
+      max-width: 640px;
+      margin: 0 auto;
+      color: #a4b5cc;
+      font-size: 18px;
+      line-height: 1.65;
+    }
+    .benefits-section { margin-bottom: 40px; }
+    h2 {
+      margin: 0 0 17px;
+      color: #f5f6fa;
+      font-size: 24px;
+      font-weight: 850;
+      letter-spacing: -.025em;
+      line-height: 1.25;
+    }
+    .benefits {
+      display: grid;
+      gap: 12px;
+    }
+    .benefit {
+      min-height: 60px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 17px;
+      border: 1px solid;
+      border-radius: 13px;
+      font-size: 16px;
+      line-height: 1.45;
+    }
+    .benefit svg {
+      width: 24px;
+      height: 24px;
+      flex: 0 0 24px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.9;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .benefit strong { font-weight: 850; }
+    .benefit.gold {
+      color: #ffc21c;
+      border-color: rgba(245, 174, 0, .25);
+      background: rgba(245, 174, 0, .105);
+    }
+    .benefit.blue {
+      color: #58a2ff;
+      border-color: rgba(42, 119, 237, .27);
+      background: rgba(42, 119, 237, .105);
+    }
+    .benefit.green {
+      color: #20d6a0;
+      border-color: rgba(16, 185, 129, .25);
+      background: rgba(16, 185, 129, .105);
+    }
+    .benefit.purple {
+      color: #bd83ff;
+      border-color: rgba(168, 85, 247, .27);
+      background: rgba(168, 85, 247, .11);
+    }
+    .benefit span { color: #d5dce8; }
+    .benefit strong { color: inherit; }
+    .offer {
+      position: relative;
+      margin-top: 40px;
+      padding: 35px 25px 24px;
+      border: 2px solid rgba(220, 151, 0, .58);
+      border-radius: 17px;
+      background: linear-gradient(145deg, rgba(49, 39, 23, .72), rgba(13, 13, 14, .94));
+      box-shadow: 0 18px 38px rgba(195, 126, 0, .12);
+    }
+    .offer-tag {
+      position: absolute;
+      top: -13px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 7px 18px;
+      border-radius: 20px;
+      background: linear-gradient(90deg, #ffc21a, #f0ad00);
+      color: #17130a;
+      font-size: 11px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+    .price-area {
+      margin: 5px 0 24px;
+      text-align: center;
+    }
+    .price-caption {
+      margin-bottom: 6px;
+      color: #aeb9cb;
+      font-size: 14px;
+    }
+    .price-line {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: 7px;
+    }
+    .currency {
+      color: #aab5c7;
+      font-size: 13px;
+      font-weight: 800;
+    }
+    .price {
+      color: #fff;
+      font-size: 53px;
+      font-weight: 900;
+      letter-spacing: -.045em;
+      line-height: 1.05;
+    }
+    .payment {
+      margin-top: 4px;
+      color: #8796ad;
+      font-size: 14px;
+    }
+    .included {
+      display: grid;
+      gap: 10px;
+      margin: 0 0 26px;
+      padding: 0;
+      list-style: none;
+      color: #e0e5ee;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+    .included li {
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+    }
+    .included svg {
+      width: 16px;
+      height: 16px;
+      flex: 0 0 16px;
+      margin-top: 1px;
+      fill: none;
+      stroke: #ffc21a;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .cta {
+      min-height: 61px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 15px 18px;
+      border-radius: 12px;
+      background: linear-gradient(100deg, #ff9f00, #e99a00);
+      color: #fff;
+      font-size: 17px;
+      font-weight: 900;
+      text-align: center;
+      text-decoration: none;
+      transition: filter .15s ease;
+    }
+    .cta:hover { filter: brightness(1.08); }
+    .decline {
+      display: block;
+      width: fit-content;
+      margin: 27px auto 0;
+      color: #8493aa;
+      font-size: 13px;
+      text-align: center;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .bottom-space { height: 95px; }
+    @media (max-width: 520px) {
+      .alert { min-height: 58px; font-size: 14px; gap: 8px; }
+      .wrap { width: min(100% - 28px, 660px); margin-top: 22px; }
+      .steps { min-height: 88px; border-radius: 14px; }
+      .step { font-size: 14px; padding: 12px 5px; }
+      .step-labels { font-size: 11px; }
+      .intro { margin: 29px auto 34px; }
+      h1 { font-size: 29px; }
+      .intro p { font-size: 16px; }
+      h2 { font-size: 21px; }
+      .benefit { gap: 11px; padding: 13px 12px; font-size: 14px; }
+      .offer { padding: 34px 17px 21px; }
+      .price { font-size: 48px; }
+      .cta { min-height: 58px; font-size: 15px; }
+    }
+  </style>
+  <script src="https://cdn.utmify.com.br/scripts/utms/latest.js" data-utmify-prevent-subids async defer></script>
+</head>
+<body>
+  <div class="alert">
+    <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M10.3 3.9 2.2 18a2 2 0 0 0 1.7 3h16.2a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/>
+      <path d="M12 9v4"/><path d="M12 17h.01"/>
+    </svg>
+    <span>Attention! Your APP access is not 100% complete yet...</span>
+  </div>
+
+  <main class="wrap">
+    <div class="step-labels"><div>STEP 1</div><div>STEP 2</div><div>STEP 3</div></div>
+    <div class="steps" aria-label="Activation progress">
+      <div class="step done"><span>Sign-Up</span><span>Complete</span><span class="tick">✓</span></div>
+      <div class="step current"><span>Activate</span><span>Your</span><span>Plan</span></div>
+      <div class="step pending"><span>Completed</span></div>
+    </div>
+
+    <header class="intro">
+      <h1>Congratulations! You now have access to Money Club.</h1>
+      <p>Before you start trading, activate your premium plan to unlock the full potential of the AI.</p>
+    </header>
+
+    <section class="benefits-section">
+      <h2>What does the Premium Plan include?</h2>
+      <div class="benefits">
+        <div class="benefit gold">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m11.6 3.3.9 1.8 2.9 5.1 1.5.3 4.3-3.7.8.5-2.8 10.2H4.8L2 7.3l.8-.5 4.3 3.7 1.5-.3 3-5.1.8-1.8Z"/><path d="M5 21h14"/></svg>
+          <span><strong>40+ analyses per day</strong> — 5x more market opportunities</span>
+        </div>
+        <div class="benefit blue">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 13h7l-1 9 10-12h-7l1-8Z"/></svg>
+          <span><strong>92% win rate</strong> — maximum AI precision</span>
+        </div>
+        <div class="benefit green">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg>
+          <span><strong>Personal Account Manager</strong> — dedicated support</span>
+        </div>
+        <div class="benefit purple">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 1.8 6.2L20 11l-6.2 1.8L12 19l-1.8-6.2L4 11l6.2-1.8L12 3Z"/><path d="M19 2v4M21 4h-4M4 17v4M6 19H2"/></svg>
+          <span><strong>$800–$1,000/day</strong> earning potential</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="offer">
+      <div class="offer-tag">☆ PREMIUM PLAN</div>
+      <div class="price-area">
+        <div class="price-caption">Unlock everything for:</div>
+        <div class="price-line"><span class="currency">US</span><span class="price">$97</span></div>
+        <div class="payment">one-time payment</div>
+      </div>
+      <ul class="included">
+        <li><svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="8.5"/><path d="m6.5 10 2.3 2.3 4.8-5"/></svg><span>40+ AI analyses per day</span></li>
+        <li><svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="8.5"/><path d="m6.5 10 2.3 2.3 4.8-5"/></svg><span>92% win rate (maximum precision)</span></li>
+        <li><svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="8.5"/><path d="m6.5 10 2.3 2.3 4.8-5"/></svg><span>Personal Account Manager</span></li>
+        <li><svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="8.5"/><path d="m6.5 10 2.3 2.3 4.8-5"/></svg><span>Earning potential: $800–$1,000/day</span></li>
+        <li><svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="8.5"/><path d="m6.5 10 2.3 2.3 4.8-5"/></svg><span>Priority 24/7 support</span></li>
+      </ul>
+      <!-- HOTMART - Sales Funnel Widget -->
+      <div id="hotmart-sales-funnel"></div>
+      <script src="https://checkout.hotmart.com/lib/hotmart-checkout-elements.js"></script>
+      <script>
+        checkoutElements.init('salesFunnel').mount('#hotmart-sales-funnel');
+      </script>
+      <!-- HOTMART - Sales Funnel Widget -->
+    </section>
+
+    <div class="bottom-space"></div>
+  </main>
+</body>
+</html>
